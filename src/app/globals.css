@@ -58,16 +58,17 @@ h1, h2, h3, h4, h5, h6 {
 .gradient-text {
   background: linear-gradient(
     270deg,
-    #FF6B00,
-    #06B6D4,
-    #FF6B00,
-    #06B6D4
+    #00D8FF,
+    #6366F1,
+    #8B5CF6,
+    #6366F1,
+    #00D8FF
   );
   background-size: 300% 300%;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: gradient-flow 4s ease infinite;
+  animation: gradient-flow 6s ease infinite;
 }
 
 /* ─── Glassmorphism ─── */

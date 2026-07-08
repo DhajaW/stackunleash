@@ -119,7 +119,7 @@ export default function Footer() {
                 style={{ fontFamily: "var(--font-heading)" }}
               >
                 <span className="text-white">STACK</span>
-                <span className="text-orange">UNLEASH</span>
+                <span className="gradient-text">UNLEASH</span>
               </span>
             </a>
             <p
