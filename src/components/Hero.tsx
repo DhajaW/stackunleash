@@ -133,7 +133,7 @@ function Particles() {
           p.x += p.vx;
           // Soft gravity pull to cascade downwards across typography
           p.vy += 0.003;
-          p.y += p.vy + Math.sin(p.x * 0.003 + p.phase) * p.waveAmp;
+          p.y += p.vy + Math.sin(p.x * 0.003 + (p.phase ?? 0)) * (p.waveAmp ?? 0);
 
           // Slow down and float gently as they disperse
           if (p.x > emitterX + 220) {
