@@ -106,7 +106,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden pt-36 pb-16"
     >
       {/* Background layers */}
       <div className="absolute inset-0 bg-navy" />
@@ -132,7 +132,7 @@ export default function Hero() {
       {/* Content */}
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center">
         {/* Trust badge */}
-        <div className="animate-fade-up mb-8 inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border-light bg-glass-light">
+        <div className="animate-fade-up mb-12 inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border-light bg-glass-light">
           <span className="w-2 h-2 rounded-full bg-cyan animate-pulse" />
           <span
             className="text-xs font-medium text-text-secondary tracking-wide"
