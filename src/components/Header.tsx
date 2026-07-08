@@ -8,6 +8,7 @@ const navLinks = [
   { label: "Our Stack", href: "/#stack" },
   { label: "Case Studies", href: "/#case-studies" },
   { label: "About Us", href: "/about" },
+  { label: "Pricing", href: "/pricing" },
 ];
 
 export default function Header() {

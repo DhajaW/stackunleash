@@ -147,7 +147,7 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
             {/* Thusitha */}
             <div className="relative group">
               <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-cyan to-orange opacity-30 blur-md group-hover:opacity-50 transition-opacity duration-300"></div>
@@ -220,6 +220,32 @@ export default function AboutPage() {
                 </div>
                 <div className="flex justify-center gap-4 text-xs text-text-muted border-t border-white/5 pt-4">
                   <a href="mailto:info@stackunleash.com" className="hover:text-violet-400 transition-colors duration-200 flex items-center gap-1">
+                    Email Profile <ArrowUpRight className="w-3 h-3" />
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Hiran */}
+            <div className="relative group">
+              <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-cyan to-orange opacity-30 blur-md group-hover:opacity-50 transition-opacity duration-300"></div>
+              <div className="relative glass-card p-8 rounded-2xl border border-white/10 text-center h-full flex flex-col justify-between">
+                <div>
+                  <div className="w-24 h-24 rounded-full bg-gradient-to-tr from-cyan to-orange mx-auto mb-6 flex items-center justify-center text-white text-3xl font-black tracking-wider shadow-inner shadow-black/40 border-2 border-white/10">
+                    HD
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-2" style={{ fontFamily: "var(--font-heading)" }}>
+                    Hiran De Silva
+                  </h3>
+                  <div className="text-cyan text-sm font-semibold tracking-wider uppercase mb-4">
+                    Director of Design & Creative Strategy
+                  </div>
+                  <p className="text-text-secondary text-sm leading-relaxed mb-6">
+                    Hiran is a creative design director specializing in interactive UI/UX prototypes, branding identity, and high-impact digital content. He crafts premium interfaces and engaging user experiences for our portal workflows.
+                  </p>
+                </div>
+                <div className="flex justify-center gap-4 text-xs text-text-muted border-t border-white/5 pt-4">
+                  <a href="mailto:info@stackunleash.com" className="hover:text-cyan transition-colors duration-200 flex items-center gap-1">
                     Email Profile <ArrowUpRight className="w-3 h-3" />
                   </a>
                 </div>
