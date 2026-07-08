@@ -1,6 +1,7 @@
 "use client";
 
-import { Zap, Mail, MapPin } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
+import LogoIcon from "@/components/LogoIcon";
 
 const footerLinks = {
   services: [
@@ -111,8 +112,8 @@ export default function Footer() {
               href="#hero"
               className="flex items-center gap-2 mb-5 group"
             >
-              <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-orange to-cyan flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
-                <Zap className="w-3.5 h-3.5 text-white" strokeWidth={2.5} />
+              <div className="transition-transform duration-300 group-hover:scale-110">
+                <LogoIcon className="w-7 h-7" />
               </div>
               <span
                 className="text-base font-extrabold tracking-tight"

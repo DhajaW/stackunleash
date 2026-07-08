@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Menu, X, Zap } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import LogoIcon from "@/components/LogoIcon";
 
 const navLinks = [
   { label: "Services", href: "#services" },
@@ -47,8 +48,8 @@ export default function Header() {
           className="flex items-center gap-2 group"
           aria-label="StackUnleash Home"
         >
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-orange to-cyan flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
-            <Zap className="w-4 h-4 text-white" strokeWidth={2.5} />
+          <div className="transition-transform duration-300 group-hover:scale-110">
+            <LogoIcon className="w-8 h-8" />
           </div>
           <span
             className="text-lg font-extrabold tracking-tight"

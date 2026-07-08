@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none">
+  <defs>
+    <linearGradient id="arrow-grad" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#22D3EE" />
+      <stop offset="70%" stop-color="#F97316" />
+      <stop offset="100%" stop-color="#FF5A00" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Cyan Hexagon Outline Frame -->
+  <polygon points="16,2 29,9.5 29,22.5 16,30 3,22.5 3,9.5" stroke="#22D3EE" stroke-width="2.5" stroke-linejoin="round" />
+  
+  <!-- Prominent Breakthrough Arrow -->
+  <path d="M10 22L19 13H14.5L23 8L21 17H16.5L10 22Z" fill="url(#arrow-grad)" />
+</svg>
