@@ -7,6 +7,7 @@ const navLinks = [
   { label: "Services", href: "/#services" },
   { label: "Our Stack", href: "/#stack" },
   { label: "Case Studies", href: "/#case-studies" },
+  { label: "About Us", href: "/about" },
 ];
 
 export default function Header() {
@@ -77,7 +78,7 @@ export default function Header() {
         {/* CTA */}
         <div className="hidden md:block">
           <a
-            href="/#discovery"
+            href="/contact"
             id="header-cta"
             className="btn-primary text-base px-6 py-3 glow-orange glow-orange-hover font-bold"
           >
@@ -120,7 +121,7 @@ export default function Header() {
             </a>
           ))}
           <a
-            href="#discovery"
+            href="/contact"
             id="mobile-cta"
             className="btn-primary text-base mt-4"
             onClick={() => setMobileOpen(false)}
