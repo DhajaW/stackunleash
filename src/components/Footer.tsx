@@ -1,7 +1,6 @@
 "use client";
 
 import { Mail, MapPin } from "lucide-react";
-import LogoIcon from "@/components/LogoIcon";
 
 const footerLinks = {
   services: [
@@ -113,7 +112,7 @@ export default function Footer() {
               className="flex items-center gap-2 mb-5 group"
             >
               <div className="transition-transform duration-300 group-hover:scale-110">
-                <LogoIcon className="w-7 h-7" />
+                <img src="/logo-icon.png" alt="StackUnleash Icon" className="w-7 h-7 object-contain" />
               </div>
               <span
                 className="text-base font-extrabold tracking-tight"

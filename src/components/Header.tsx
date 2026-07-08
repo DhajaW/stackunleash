@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-import LogoIcon from "@/components/LogoIcon";
 
 const navLinks = [
   { label: "Services", href: "#services" },
@@ -49,7 +48,7 @@ export default function Header() {
           aria-label="StackUnleash Home"
         >
           <div className="transition-transform duration-300 group-hover:scale-110">
-            <LogoIcon className="w-8 h-8" />
+            <img src="/logo-icon.png" alt="StackUnleash Icon" className="w-8 h-8 object-contain" />
           </div>
           <span
             className="text-lg font-extrabold tracking-tight"
