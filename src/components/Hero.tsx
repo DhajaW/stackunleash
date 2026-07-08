@@ -20,7 +20,10 @@ function Particles() {
       vy: number;
       size: number;
       opacity: number;
+      maxOpacity: number;
       color: string;
+      life: number;
+      maxLife: number;
     }[] = [];
 
     const resize = () => {
@@ -31,38 +34,107 @@ function Particles() {
     window.addEventListener("resize", resize);
 
     const colors = [
-      "rgba(6, 182, 212, ",
-      "rgba(255, 107, 0, ",
-      "rgba(148, 163, 184, ",
+      "rgba(6, 182, 212, ",   // Cyan
+      "rgba(99, 102, 241, ",  // Indigo
+      "rgba(139, 92, 246, ",  // Purple
     ];
 
-    for (let i = 0; i < 60; i++) {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.3,
-        vy: (Math.random() - 0.5) * 0.3,
-        size: Math.random() * 2 + 0.5,
-        opacity: Math.random() * 0.4 + 0.1,
-        color: colors[Math.floor(Math.random() * colors.length)],
-      });
+    // Emitter coordinates
+    let emitterX = 80;
+    let emitterY = 48;
+
+    const updateEmitter = () => {
+      const iconImg = document.getElementById("logo-icon-img");
+      if (iconImg) {
+        const iconRect = iconImg.getBoundingClientRect();
+        const canvasRect = canvas.getBoundingClientRect();
+        // The digital wave is at the right edge of the logo icon.
+        // Let's offset slightly to the right of the icon bounding box
+        emitterX = iconRect.right - canvasRect.left;
+        emitterY = (iconRect.top + iconRect.height / 2) - canvasRect.top;
+      }
+    };
+
+    const resetParticle = (p: any, fromEmitter = true) => {
+      updateEmitter();
+      if (fromEmitter) {
+        p.x = emitterX;
+        p.y = emitterY;
+        // Direction: flow rightwards and outwards
+        p.vx = Math.random() * 1.8 + 0.6; // Positive X velocity (rightwards)
+        p.vy = (Math.random() - 0.5) * 1.2; // Small Y velocity spread
+        p.life = 0;
+        p.maxLife = Math.random() * 200 + 150;
+      } else {
+        // Initial random spread
+        p.x = Math.random() * canvas.width;
+        p.y = Math.random() * canvas.height;
+        p.vx = (Math.random() - 0.3) * 0.6; // slight drift
+        p.vy = (Math.random() - 0.5) * 0.4;
+        p.life = Math.random() * 200;
+        p.maxLife = Math.random() * 200 + 150;
+      }
+      p.size = Math.random() * 2.2 + 0.6;
+      p.maxOpacity = Math.random() * 0.5 + 0.15;
+      p.opacity = fromEmitter ? 0 : p.maxOpacity; // Fade in from emitter
+      p.color = colors[Math.floor(Math.random() * colors.length)];
+    };
+
+    // Initialize particles:
+    // Seed 35 particles across the screen, and 45 particles that will start at the emitter
+    for (let i = 0; i < 80; i++) {
+      const p = {} as any;
+      resetParticle(p, i >= 35);
+      // For those starting at emitter, stagger their positions along their velocity vector
+      if (i >= 35) {
+        const stagger = Math.random() * 100;
+        p.x += p.vx * stagger;
+        p.y += p.vy * stagger;
+        p.opacity = p.maxOpacity * (stagger / 100);
+      }
+      particles.push(p);
     }
 
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+      updateEmitter();
 
       particles.forEach((p) => {
+        p.life++;
+
+        // Physics movement
         p.x += p.vx;
         p.y += p.vy;
 
-        if (p.x < 0) p.x = canvas.width;
-        if (p.x > canvas.width) p.x = 0;
-        if (p.y < 0) p.y = canvas.height;
-        if (p.y > canvas.height) p.y = 0;
+        // Add a gentle float / wind drift once they get further from the emitter
+        if (p.x > emitterX + 150) {
+          p.vx = p.vx * 0.98 + (Math.random() - 0.5) * 0.02; // slow down slightly and drift
+          p.vy = p.vy * 0.98 + (Math.random() - 0.5) * 0.03;
+        }
+
+        // Fade in when leaving emitter, fade out near end of life
+        if (p.life < 50) {
+          p.opacity = (p.life / 50) * p.maxOpacity;
+        } else if (p.life > p.maxLife - 50) {
+          p.opacity = ((p.maxLife - p.life) / 50) * p.maxOpacity;
+        } else {
+          p.opacity = p.maxOpacity;
+        }
+
+        // Reset if offscreen or expired
+        if (
+          p.x < -50 ||
+          p.x > canvas.width + 50 ||
+          p.y < -50 ||
+          p.y > canvas.height + 50 ||
+          p.life >= p.maxLife
+        ) {
+          resetParticle(p, true);
+        }
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = p.color + p.opacity + ")";
+        ctx.fillStyle = p.color + Math.max(0, p.opacity) + ")";
         ctx.fill();
       });
 
@@ -72,11 +144,17 @@ function Particles() {
           const dx = particles[i].x - particles[j].x;
           const dy = particles[i].y - particles[j].y;
           const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 120) {
+          if (dist < 110) {
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(6, 182, 212, ${0.06 * (1 - dist / 120)})`;
+            
+            // Stronger connection opacity if near the emitter (creates the digital wave effect)
+            const avgX = (particles[i].x + particles[j].x) / 2;
+            const distFromEmitter = Math.abs(avgX - emitterX);
+            const connectionAlphaFactor = distFromEmitter < 200 ? 0.12 : 0.06;
+            
+            ctx.strokeStyle = `rgba(6, 182, 212, ${connectionAlphaFactor * (1 - dist / 110) * Math.min(particles[i].opacity, particles[j].opacity)})`;
             ctx.lineWidth = 0.5;
             ctx.stroke();
           }
