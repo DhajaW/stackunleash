@@ -7,7 +7,6 @@ import {
   GraduationCap,
   TrendingUp,
   ArrowRight,
-  Building2,
 } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
@@ -47,12 +46,7 @@ const caseStudies = [
   },
 ];
 
-const banks = [
-  { name: "HNB", initials: "HNB" },
-  { name: "NTB", initials: "NTB" },
-  { name: "Commercial Bank", initials: "CB" },
-  { name: "Sampath Bank", initials: "SB" },
-];
+
 
 export default function CaseStudies() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -178,54 +172,7 @@ export default function CaseStudies() {
           })}
         </div>
 
-        {/* Banking Authority Section */}
-        <div
-          className={`transition-all duration-700 delay-500 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
-          <div className="relative rounded-2xl overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-r from-navy-light via-navy-lighter/20 to-navy-light" />
-            <div className="relative p-8 sm:p-10 md:p-12">
-              <div className="flex flex-col md:flex-row items-center gap-8">
-                <div className="flex-1 text-center md:text-left">
-                  <div className="flex items-center justify-center md:justify-start gap-3 mb-4">
-                    <Building2 className="w-5 h-5 text-cyan" />
-                    <p
-                      className="text-xs font-semibold text-cyan uppercase tracking-widest"
-                      style={{ fontFamily: "var(--font-heading)" }}
-                    >
-                      Trusted Banking Infrastructure Experience
-                    </p>
-                  </div>
-                  <p
-                    className="text-text-secondary text-sm max-w-md"
-                    style={{ fontFamily: "var(--font-body)" }}
-                  >
-                    Our team brings enterprise-grade reliability honed through
-                    years of working with major financial institutions.
-                  </p>
-                </div>
-                <div className="flex items-center gap-6 flex-wrap justify-center">
-                  {banks.map((bank) => (
-                    <div
-                      key={bank.name}
-                      className="group w-20 h-20 rounded-2xl glass-card flex items-center justify-center cursor-default"
-                      title={bank.name}
-                    >
-                      <span
-                        className="text-lg font-bold text-text-muted/40 group-hover:text-white transition-all duration-300"
-                        style={{ fontFamily: "var(--font-heading)" }}
-                      >
-                        {bank.initials}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+
       </div>
     </section>
   );
