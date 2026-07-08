@@ -92,8 +92,8 @@ export default function PrivacyPage() {
               </h2>
               <p>
                 For questions regarding this policy or the security of your custom integrations, please reach out to us at:{" "}
-                <a href="mailto:info@stackunleash.com" className="text-cyan hover:underline">
-                  info@stackunleash.com
+                <a href="mailto:hello@stackunleash.com" className="text-cyan hover:underline">
+                  hello@stackunleash.com
                 </a>
               </p>
             </section>

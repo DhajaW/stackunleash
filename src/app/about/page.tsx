@@ -167,7 +167,7 @@ export default function AboutPage() {
                   </p>
                 </div>
                 <div className="flex justify-center gap-4 text-xs text-text-muted border-t border-white/5 pt-4">
-                  <a href="mailto:info@stackunleash.com" className="hover:text-cyan transition-colors duration-200 flex items-center gap-1">
+                  <a href="mailto:thusitha@stackunleash.com" className="hover:text-cyan transition-colors duration-200 flex items-center gap-1">
                     Email Profile <ArrowUpRight className="w-3 h-3" />
                   </a>
                 </div>
@@ -193,7 +193,7 @@ export default function AboutPage() {
                   </p>
                 </div>
                 <div className="flex justify-center gap-4 text-xs text-text-muted border-t border-white/5 pt-4">
-                  <a href="mailto:info@stackunleash.com" className="hover:text-orange transition-colors duration-200 flex items-center gap-1">
+                  <a href="mailto:asanka@stackunleash.com" className="hover:text-orange transition-colors duration-200 flex items-center gap-1">
                     Email Profile <ArrowUpRight className="w-3 h-3" />
                   </a>
                 </div>
@@ -219,7 +219,7 @@ export default function AboutPage() {
                   </p>
                 </div>
                 <div className="flex justify-center gap-4 text-xs text-text-muted border-t border-white/5 pt-4">
-                  <a href="mailto:info@stackunleash.com" className="hover:text-violet-400 transition-colors duration-200 flex items-center gap-1">
+                  <a href="mailto:udaya@stackunleash.com" className="hover:text-violet-400 transition-colors duration-200 flex items-center gap-1">
                     Email Profile <ArrowUpRight className="w-3 h-3" />
                   </a>
                 </div>
@@ -245,7 +245,7 @@ export default function AboutPage() {
                   </p>
                 </div>
                 <div className="flex justify-center gap-4 text-xs text-text-muted border-t border-white/5 pt-4">
-                  <a href="mailto:info@stackunleash.com" className="hover:text-cyan transition-colors duration-200 flex items-center gap-1">
+                  <a href="mailto:hiran@stackunleash.com" className="hover:text-cyan transition-colors duration-200 flex items-center gap-1">
                     Email Profile <ArrowUpRight className="w-3 h-3" />
                   </a>
                 </div>

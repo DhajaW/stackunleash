@@ -293,8 +293,8 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-white text-sm">Direct Inquiry Email</h4>
-                    <a href="mailto:info@stackunleash.com" className="text-sm text-text-secondary hover:text-cyan transition-colors duration-200">
-                      info@stackunleash.com
+                    <a href="mailto:hello@stackunleash.com" className="text-sm text-text-secondary hover:text-cyan transition-colors duration-200">
+                      hello@stackunleash.com
                     </a>
                   </div>
                 </div>
