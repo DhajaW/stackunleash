@@ -24,6 +24,11 @@ function Particles() {
       color: string;
       life: number;
       maxLife: number;
+      type: "circle" | "text";
+      char?: string;
+      isStream: boolean;
+      phase?: number;
+      waveAmp?: number;
     }[] = [];
 
     const resize = () => {
@@ -32,12 +37,6 @@ function Particles() {
     };
     resize();
     window.addEventListener("resize", resize);
-
-    const colors = [
-      "rgba(6, 182, 212, ",   // Cyan
-      "rgba(99, 102, 241, ",  // Indigo
-      "rgba(139, 92, 246, ",  // Purple
-    ];
 
     // Emitter coordinates
     let emitterX = 80;
@@ -48,49 +47,77 @@ function Particles() {
       if (iconImg) {
         const iconRect = iconImg.getBoundingClientRect();
         const canvasRect = canvas.getBoundingClientRect();
-        // The digital wave is at the right edge of the logo icon.
-        // Let's offset slightly to the right of the icon bounding box
         emitterX = iconRect.right - canvasRect.left;
         emitterY = (iconRect.top + iconRect.height / 2) - canvasRect.top;
       }
     };
 
-    const resetParticle = (p: any, fromEmitter = true) => {
-      updateEmitter();
-      if (fromEmitter) {
+    const resetParticle = (p: any, isStream: boolean) => {
+      p.isStream = isStream;
+      if (isStream) {
+        updateEmitter();
         p.x = emitterX;
         p.y = emitterY;
-        // Direction: flow rightwards and outwards
-        p.vx = Math.random() * 1.8 + 0.6; // Positive X velocity (rightwards)
-        p.vy = (Math.random() - 0.5) * 1.2; // Small Y velocity spread
+        // Direction: flow rightwards and sweep downwards
+        p.vx = Math.random() * 2.0 + 0.8; // positive speed
+        p.vy = (Math.random() - 0.1) * 0.4; // slight downward bias
         p.life = 0;
-        p.maxLife = Math.random() * 200 + 150;
+        p.maxLife = Math.random() * 250 + 150;
+        p.phase = Math.random() * Math.PI * 2;
+        p.waveAmp = Math.random() * 1.5 + 0.5;
+
+        // 35% represent code/automation characters
+        if (Math.random() < 0.35) {
+          p.type = "text";
+          const chars = ["0", "1", "{", "}", "<", ">", "+", "*", ";"];
+          p.char = chars[Math.floor(Math.random() * chars.length)];
+        } else {
+          p.type = "circle";
+        }
+
+        // Stream colors: Cyan, Light Blue, Golden Amber
+        const streamColors = [
+          "rgba(34, 211, 238, ",  // Cyan
+          "rgba(56, 189, 248, ",  // Light Blue (Sky)
+          "rgba(251, 146, 60, ",  // Golden Orange
+          "rgba(245, 158, 11, ",  // Golden Amber
+        ];
+        p.color = streamColors[Math.floor(Math.random() * streamColors.length)];
+        p.size = Math.random() * 2.0 + 0.7;
+        p.maxOpacity = Math.random() * 0.6 + 0.2;
+        p.opacity = 0; // Fade in
       } else {
-        // Initial random spread
+        // Ambient background stars
         p.x = Math.random() * canvas.width;
         p.y = Math.random() * canvas.height;
-        p.vx = (Math.random() - 0.3) * 0.6; // slight drift
-        p.vy = (Math.random() - 0.5) * 0.4;
+        p.vx = (Math.random() - 0.5) * 0.25; // slow drift
+        p.vy = (Math.random() - 0.5) * 0.25;
         p.life = Math.random() * 200;
-        p.maxLife = Math.random() * 200 + 150;
+        p.maxLife = Math.random() * 300 + 200;
+        p.type = "circle";
+        const ambientColors = [
+          "rgba(148, 163, 184, ", // Slate
+          "rgba(203, 213, 225, ", // Light Gray
+          "rgba(6, 182, 212, ",   // Faint Cyan
+        ];
+        p.color = ambientColors[Math.floor(Math.random() * ambientColors.length)];
+        p.size = Math.random() * 1.4 + 0.4;
+        p.maxOpacity = Math.random() * 0.2 + 0.05; // faint ambient glow
+        p.opacity = p.maxOpacity;
       }
-      p.size = Math.random() * 2.2 + 0.6;
-      p.maxOpacity = Math.random() * 0.5 + 0.15;
-      p.opacity = fromEmitter ? 0 : p.maxOpacity; // Fade in from emitter
-      p.color = colors[Math.floor(Math.random() * colors.length)];
     };
 
-    // Initialize particles:
-    // Seed 35 particles across the screen, and 45 particles that will start at the emitter
-    for (let i = 0; i < 80; i++) {
+    // Initialize: 45 ambient stars and 45 logo stream particles
+    for (let i = 0; i < 90; i++) {
       const p = {} as any;
-      resetParticle(p, i >= 35);
-      // For those starting at emitter, stagger their positions along their velocity vector
-      if (i >= 35) {
-        const stagger = Math.random() * 100;
+      const isStream = i >= 45;
+      resetParticle(p, isStream);
+      if (isStream) {
+        // Stagger along movement path
+        const stagger = Math.random() * 120;
         p.x += p.vx * stagger;
         p.y += p.vy * stagger;
-        p.opacity = p.maxOpacity * (stagger / 100);
+        p.opacity = p.maxOpacity * Math.min(1, stagger / 50);
       }
       particles.push(p);
     }
@@ -102,59 +129,86 @@ function Particles() {
       particles.forEach((p) => {
         p.life++;
 
-        // Physics movement
-        p.x += p.vx;
-        p.y += p.vy;
+        if (p.isStream) {
+          p.x += p.vx;
+          // Soft gravity pull to cascade downwards across typography
+          p.vy += 0.003;
+          p.y += p.vy + Math.sin(p.x * 0.003 + p.phase) * p.waveAmp;
 
-        // Add a gentle float / wind drift once they get further from the emitter
-        if (p.x > emitterX + 150) {
-          p.vx = p.vx * 0.98 + (Math.random() - 0.5) * 0.02; // slow down slightly and drift
-          p.vy = p.vy * 0.98 + (Math.random() - 0.5) * 0.03;
-        }
+          // Slow down and float gently as they disperse
+          if (p.x > emitterX + 220) {
+            p.vx = p.vx * 0.985 + (Math.random() - 0.5) * 0.01;
+            p.vy = p.vy * 0.985 + (Math.random() - 0.5) * 0.02;
+          }
 
-        // Fade in when leaving emitter, fade out near end of life
-        if (p.life < 50) {
-          p.opacity = (p.life / 50) * p.maxOpacity;
-        } else if (p.life > p.maxLife - 50) {
-          p.opacity = ((p.maxLife - p.life) / 50) * p.maxOpacity;
+          // Fade-in / Fade-out bounds
+          if (p.life < 50) {
+            p.opacity = (p.life / 50) * p.maxOpacity;
+          } else if (p.life > p.maxLife - 50) {
+            p.opacity = ((p.maxLife - p.life) / 50) * p.maxOpacity;
+          } else {
+            p.opacity = p.maxOpacity;
+          }
+
+          // Reset if off-screen or dead
+          if (
+            p.x > canvas.width + 50 ||
+            p.y > canvas.height + 50 ||
+            p.life >= p.maxLife
+          ) {
+            resetParticle(p, true);
+          }
         } else {
-          p.opacity = p.maxOpacity;
+          // Ambient stars float and wrap
+          p.x += p.vx;
+          p.y += p.vy;
+
+          if (p.x < 0) p.x = canvas.width;
+          if (p.x > canvas.width) p.x = 0;
+          if (p.y < 0) p.y = canvas.height;
+          if (p.y > canvas.height) p.y = 0;
+
+          if (p.life >= p.maxLife) {
+            resetParticle(p, false);
+          }
         }
 
-        // Reset if offscreen or expired
-        if (
-          p.x < -50 ||
-          p.x > canvas.width + 50 ||
-          p.y < -50 ||
-          p.y > canvas.height + 50 ||
-          p.life >= p.maxLife
-        ) {
-          resetParticle(p, true);
+        // Draw particle shape
+        if (p.type === "circle") {
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          ctx.fillStyle = p.color + Math.max(0, p.opacity) + ")";
+          ctx.fill();
+        } else if (p.type === "text") {
+          ctx.font = `bold ${Math.round(p.size * 5.5 + 7)}px monospace`;
+          ctx.fillStyle = p.color + Math.max(0, p.opacity) + ")";
+          ctx.fillText(p.char || "", p.x, p.y);
         }
-
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = p.color + Math.max(0, p.opacity) + ")";
-        ctx.fill();
       });
 
-      // Draw connections
+      // Draw connection lines
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
+          // Connect stream particles or ambient stars nearby
+          if (!particles[i].isStream && !particles[j].isStream) continue;
+
           const dx = particles[i].x - particles[j].x;
           const dy = particles[i].y - particles[j].y;
           const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 110) {
+          if (dist < 100) {
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
-            
-            // Stronger connection opacity if near the emitter (creates the digital wave effect)
+
             const avgX = (particles[i].x + particles[j].x) / 2;
             const distFromEmitter = Math.abs(avgX - emitterX);
-            const connectionAlphaFactor = distFromEmitter < 200 ? 0.12 : 0.06;
-            
-            ctx.strokeStyle = `rgba(6, 182, 212, ${connectionAlphaFactor * (1 - dist / 110) * Math.min(particles[i].opacity, particles[j].opacity)})`;
+            const connectionAlphaFactor = distFromEmitter < 200 ? 0.12 : 0.05;
+
+            ctx.strokeStyle = `rgba(6, 182, 212, ${
+              connectionAlphaFactor *
+              (1 - dist / 100) *
+              Math.min(particles[i].opacity, particles[j].opacity)
+            })`;
             ctx.lineWidth = 0.5;
             ctx.stroke();
           }
