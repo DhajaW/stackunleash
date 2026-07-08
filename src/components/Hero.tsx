@@ -279,14 +279,10 @@ export default function Hero() {
           className="animate-fade-up animate-delay-100 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.08] tracking-tight mb-6"
           style={{ fontFamily: "var(--font-heading)" }}
         >
-          We Don&apos;t Just Build Websites.
+          Cut Manual Work
           <br />
           <span className="mt-2 block">
-            We Build{" "}
-            <span className="gradient-text">
-              Automated Business Systems
-            </span>
-            .
+            By <span className="gradient-text">70-80%</span>.
           </span>
         </h1>
 
@@ -295,8 +291,8 @@ export default function Hero() {
           className="animate-fade-up animate-delay-200 max-w-2xl mx-auto text-base sm:text-lg md:text-xl text-text-secondary leading-relaxed mb-10"
           style={{ fontFamily: "var(--font-body)" }}
         >
-          Empowering your business with AI-driven workflows, smart portals,
-          and seamless web-to-mobile solutions.
+          We build custom AI workflows, enterprise portals, and mobile apps
+          custom-tailored for your business acceleration.
         </p>
 
         {/* Buttons */}

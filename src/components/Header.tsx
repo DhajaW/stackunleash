@@ -4,9 +4,9 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
-  { label: "Services", href: "#services" },
-  { label: "Our Stack", href: "#stack" },
-  { label: "Case Studies", href: "#case-studies" },
+  { label: "Services", href: "/#services" },
+  { label: "Our Stack", href: "/#stack" },
+  { label: "Case Studies", href: "/#case-studies" },
 ];
 
 export default function Header() {
@@ -42,7 +42,7 @@ export default function Header() {
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-[80px]">
         {/* Logo */}
         <a
-          href="#hero"
+          href="/#hero"
           id="logo-link"
           className="flex items-center gap-3.5 group"
           aria-label="StackUnleash Home"
@@ -77,7 +77,7 @@ export default function Header() {
         {/* CTA */}
         <div className="hidden md:block">
           <a
-            href="#discovery"
+            href="/#discovery"
             id="header-cta"
             className="btn-primary text-base px-6 py-3 glow-orange glow-orange-hover font-bold"
           >

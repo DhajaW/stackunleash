@@ -4,19 +4,19 @@ import { Mail, MapPin } from "lucide-react";
 
 const footerLinks = {
   services: [
-    { label: "Enterprise Portals", href: "#services" },
-    { label: "AI Workflows", href: "#services" },
-    { label: "Mobile Apps", href: "#services" },
-    { label: "Consulting", href: "#discovery" },
+    { label: "Enterprise Portals", href: "/#services" },
+    { label: "AI Workflows", href: "/#services" },
+    { label: "Mobile Apps", href: "/#services" },
+    { label: "Consulting", href: "/#discovery" },
   ],
   company: [
-    { label: "Our Stack", href: "#stack" },
-    { label: "Case Studies", href: "#case-studies" },
-    { label: "Book a Call", href: "#discovery" },
+    { label: "Our Stack", href: "/#stack" },
+    { label: "Case Studies", href: "/#case-studies" },
+    { label: "Book a Call", href: "/#discovery" },
   ],
   legal: [
-    { label: "Privacy Policy", href: "#" },
-    { label: "Terms of Service", href: "#" },
+    { label: "Privacy Policy", href: "/privacy" },
+    { label: "Terms of Service", href: "/terms" },
   ],
 };
 
@@ -93,8 +93,7 @@ export default function Footer() {
             </p>
           </div>
           <a
-            href="#discovery"
-            id="footer-cta"
+            href="/#discovery"
             className="btn-primary text-sm whitespace-nowrap glow-orange"
           >
             Book Strategy Call
@@ -108,7 +107,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
             <a
-              href="#hero"
+              href="/#hero"
               className="flex items-center gap-2 mb-5 group"
             >
               <div className="transition-transform duration-300 group-hover:scale-110">
