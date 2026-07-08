@@ -48,7 +48,7 @@ export default function Header() {
           aria-label="StackUnleash Home"
         >
           <div className="transition-transform duration-300 group-hover:scale-110">
-            <img src="/logo-icon.png" alt="StackUnleash Icon" className="w-8 h-8 object-contain" />
+            <img src="/logo-icon.png" alt="StackUnleash Icon" className="h-11 w-auto object-contain" />
           </div>
           <span
             className="text-lg font-extrabold tracking-tight"
