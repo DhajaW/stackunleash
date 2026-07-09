@@ -85,7 +85,7 @@ export default function AboutPage() {
                 StackUnleash began with a simple observation: businesses were spending countless hours on repetitive, manual tasks like copying data between spreadsheets, chasing contractor approvals, and manually routing client messages. 
               </p>
               <p className="text-text-secondary text-base leading-relaxed">
-                Founded by Thusitha Weerasinghe, we started as a small group of systems architects dedicated to building bulletproof automations. Today, we engineer custom AI workflows, secure client portals, and hybrid mobile integrations that help global teams scale efficiently.
+                Founded by Thusitha Weerasinghe, StackUnleash was built on a foundation of collective expertise. We brought together seasoned specialists in database architecture, enterprise cybersecurity, digital growth, and interactive UI/UX design to form a unified, engineering-first automation agency. Today, we work as a cohesive unit to build custom AI workflows, secure client portals, and hybrid mobile integrations.
               </p>
             </div>
 
@@ -188,7 +188,7 @@ export default function AboutPage() {
               The Team Behind the <span className="gradient-text">Automation</span>
             </h2>
             <p className="text-text-secondary max-w-xl mx-auto">
-              Our engineering team is led by industry veterans specializing in scalable database engineering and systems integration.
+              Our multidisciplinary team brings together seasoned experts in automation architecture, enterprise cybersecurity, growth strategy, and interactive UI/UX design.
             </p>
           </div>
 
@@ -309,7 +309,7 @@ export default function AboutPage() {
               Ready to Unleash Your Systems?
             </h2>
             <p className="text-text-secondary text-base max-w-xl mx-auto mb-8">
-              Get in touch with Thusitha and the team to review your automation roadmap and eliminate operational bottlenecks.
+              Get in touch with our expert engineering and integration team to review your automation roadmap and eliminate operational bottlenecks.
             </p>
             <a 
               href="/contact" 

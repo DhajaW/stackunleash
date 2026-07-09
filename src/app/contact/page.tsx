@@ -102,7 +102,7 @@ function ContactFormContent() {
               Connection Established!
             </h3>
             <p className="text-text-secondary text-sm leading-relaxed max-w-md mx-auto mb-8">
-              Thank you, <span className="text-white font-semibold">{name}</span>! Your automation scope parameters have been logged securely. Thusitha will analyze your stack details and email you at <span className="text-white font-semibold">{email}</span> within the next 12 hours.
+              Thank you, <span className="text-white font-semibold">{name}</span>! Your automation scope parameters have been logged securely. Thusitha and our expert engineering team will analyze your stack details and email you at <span className="text-white font-semibold">{email}</span> within the next 12 hours.
             </p>
             <button
               onClick={handleReset}
@@ -282,7 +282,7 @@ export default function ContactPage() {
                   Have an automation bottleneck?
                 </h2>
                 <p className="text-text-secondary text-sm leading-relaxed mb-6">
-                  Fill out the project scope outline, and our lead integration architect (Thusitha) will run a stack review. We specialize in connecting legacy infrastructure with modern automated pipelines.
+                  Fill out the project scope outline, and Thusitha and our core engineering team will run a comprehensive stack review. We specialize in connecting legacy infrastructure with modern automated pipelines.
                 </p>
               </div>
 
