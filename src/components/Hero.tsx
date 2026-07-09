@@ -3,6 +3,177 @@
 import { useEffect, useRef } from "react";
 import { ArrowRight, ChevronDown } from "lucide-react";
 
+function drawTechIcon(
+  ctx: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  size: number,
+  techName: string,
+  color: string
+) {
+  ctx.save();
+  ctx.strokeStyle = color;
+  ctx.fillStyle = color;
+  
+  switch (techName) {
+    case "react":
+      ctx.translate(x, y);
+      ctx.lineWidth = size * 0.15;
+      // Central nucleus
+      ctx.beginPath();
+      ctx.arc(0, 0, size * 0.18, 0, Math.PI * 2);
+      ctx.fill();
+      // Orbit ellipses
+      for (let a = 0; a < 3; a++) {
+        ctx.beginPath();
+        ctx.ellipse(0, 0, size * 0.65, size * 0.22, (a * Math.PI) / 3, 0, Math.PI * 2);
+        ctx.stroke();
+      }
+      break;
+      
+    case "vercel":
+      ctx.translate(x, y);
+      ctx.beginPath();
+      ctx.moveTo(0, -size * 0.55);
+      ctx.lineTo(size * 0.55, size * 0.45);
+      ctx.lineTo(-size * 0.55, size * 0.45);
+      ctx.closePath();
+      ctx.fill();
+      break;
+      
+    case "nextjs":
+      ctx.translate(x, y);
+      // Background circle
+      ctx.beginPath();
+      ctx.arc(0, 0, size * 0.65, 0, Math.PI * 2);
+      ctx.fillStyle = "#0a0a0a";
+      ctx.fill();
+      ctx.strokeStyle = "rgba(255, 255, 255, 0.2)";
+      ctx.lineWidth = size * 0.06;
+      ctx.stroke();
+      // Letter 'N'
+      ctx.strokeStyle = "#ffffff";
+      ctx.lineWidth = size * 0.13;
+      ctx.lineCap = "round";
+      ctx.lineJoin = "round";
+      ctx.beginPath();
+      ctx.moveTo(-size * 0.28, size * 0.3);
+      ctx.lineTo(-size * 0.28, -size * 0.3);
+      ctx.lineTo(size * 0.22, size * 0.3);
+      ctx.moveTo(size * 0.22, -size * 0.3);
+      ctx.lineTo(size * 0.22, size * 0.3);
+      ctx.stroke();
+      // Diagonal slash gradient effect overlay
+      ctx.strokeStyle = "rgba(255, 255, 255, 0.85)";
+      ctx.beginPath();
+      ctx.moveTo(-size * 0.28, -size * 0.15);
+      ctx.lineTo(size * 0.22, size * 0.3);
+      ctx.stroke();
+      break;
+      
+    case "n8n":
+      ctx.translate(x, y);
+      ctx.lineWidth = size * 0.14;
+      // Connect nodes
+      ctx.beginPath();
+      ctx.moveTo(-size * 0.35, -size * 0.2);
+      ctx.lineTo(0, size * 0.2);
+      ctx.lineTo(size * 0.35, -size * 0.2);
+      ctx.stroke();
+      // Helper to draw node circles
+      const drawN8nNode = (nx: number, ny: number, isCore: boolean) => {
+        ctx.beginPath();
+        ctx.arc(nx, ny, size * 0.18, 0, Math.PI * 2);
+        ctx.fillStyle = isCore ? color : "#0a0a0a";
+        ctx.fill();
+        ctx.stroke();
+      };
+      drawN8nNode(-size * 0.35, -size * 0.2, false);
+      drawN8nNode(0, size * 0.2, true);
+      drawN8nNode(size * 0.35, -size * 0.2, false);
+      break;
+      
+    case "capacitor":
+      ctx.translate(x, y);
+      // Lightning bolt
+      ctx.beginPath();
+      ctx.moveTo(size * 0.1, -size * 0.65);
+      ctx.lineTo(-size * 0.35, 0);
+      ctx.lineTo(-size * 0.05, 0);
+      ctx.lineTo(-size * 0.15, size * 0.65);
+      ctx.lineTo(size * 0.35, 0);
+      ctx.lineTo(size * 0.05, 0);
+      ctx.closePath();
+      ctx.fill();
+      break;
+      
+    case "tailwind":
+      ctx.translate(x, y);
+      const drawTailwindWave = (ox: number, oy: number) => {
+        ctx.beginPath();
+        ctx.moveTo(ox - size * 0.45, oy);
+        ctx.bezierCurveTo(ox - size * 0.2, oy - size * 0.35, ox + size * 0.2, oy - size * 0.35, ox + size * 0.45, oy);
+        ctx.bezierCurveTo(ox + size * 0.2, oy + size * 0.35, ox - size * 0.2, oy + size * 0.35, ox - size * 0.45, oy);
+        ctx.closePath();
+        ctx.fill();
+      };
+      ctx.globalAlpha = 0.6;
+      drawTailwindWave(-size * 0.12, -size * 0.12);
+      ctx.globalAlpha = 0.95;
+      drawTailwindWave(size * 0.12, size * 0.12);
+      break;
+      
+    case "github":
+      ctx.translate(x, y);
+      ctx.lineWidth = size * 0.14;
+      ctx.lineCap = "round";
+      // Git branch line
+      ctx.beginPath();
+      ctx.moveTo(-size * 0.2, -size * 0.45);
+      ctx.lineTo(-size * 0.2, size * 0.45);
+      ctx.moveTo(-size * 0.2, 0);
+      ctx.bezierCurveTo(0, 0, size * 0.25, 0, size * 0.25, -size * 0.15);
+      ctx.lineTo(size * 0.25, -size * 0.35);
+      ctx.stroke();
+      // Draw 3 node dots
+      const drawBranchDot = (bx: number, by: number) => {
+        ctx.beginPath();
+        ctx.arc(bx, by, size * 0.16, 0, Math.PI * 2);
+        ctx.fillStyle = color;
+        ctx.fill();
+      };
+      drawBranchDot(-size * 0.2, -size * 0.45);
+      drawBranchDot(-size * 0.2, size * 0.45);
+      drawBranchDot(size * 0.25, -size * 0.35);
+      break;
+      
+    case "wordpress":
+      ctx.translate(x, y);
+      // WordPress blue circle
+      ctx.beginPath();
+      ctx.arc(0, 0, size * 0.65, 0, Math.PI * 2);
+      ctx.fillStyle = "#21759b";
+      ctx.fill();
+      ctx.strokeStyle = "rgba(255, 255, 255, 0.4)";
+      ctx.lineWidth = size * 0.08;
+      ctx.stroke();
+      // 'W' letter inside
+      ctx.strokeStyle = "#ffffff";
+      ctx.lineWidth = size * 0.11;
+      ctx.lineCap = "round";
+      ctx.lineJoin = "round";
+      ctx.beginPath();
+      ctx.moveTo(-size * 0.35, -size * 0.28);
+      ctx.lineTo(-size * 0.18, size * 0.3);
+      ctx.lineTo(0, -size * 0.08);
+      ctx.lineTo(size * 0.18, size * 0.3);
+      ctx.lineTo(size * 0.35, -size * 0.28);
+      ctx.stroke();
+      break;
+  }
+  ctx.restore();
+}
+
 function Particles() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -24,8 +195,9 @@ function Particles() {
       color: string;
       life: number;
       maxLife: number;
-      type: "circle" | "text";
+      type: "circle" | "text" | "tech";
       char?: string;
+      techName?: string;
       isStream: boolean;
       phase?: number;
       waveAmp?: number;
@@ -58,51 +230,72 @@ function Particles() {
         updateEmitter();
         p.x = emitterX;
         p.y = emitterY;
-        // Direction: flow rightwards and sweep downwards
-        p.vx = Math.random() * 2.0 + 0.8; // positive speed
-        p.vy = (Math.random() - 0.1) * 0.4; // slight downward bias
+        // Direction: flow rightwards and sweep downwards (slower!)
+        p.vx = Math.random() * 0.8 + 0.4;
+        p.vy = (Math.random() - 0.15) * 0.15;
         p.life = 0;
-        p.maxLife = Math.random() * 250 + 150;
+        p.maxLife = Math.random() * 300 + 200;
         p.phase = Math.random() * Math.PI * 2;
-        p.waveAmp = Math.random() * 1.5 + 0.5;
+        p.waveAmp = Math.random() * 1.2 + 0.3;
 
-        // 35% represent code/automation characters
-        if (Math.random() < 0.35) {
+        // Emitter particles: 20% brand tech icons, 25% code text, 55% stream circles
+        const roll = Math.random();
+        if (roll < 0.20) {
+          p.type = "tech";
+          const techs = ["react", "vercel", "nextjs", "n8n", "capacitor", "tailwind", "github", "wordpress"];
+          p.techName = techs[Math.floor(Math.random() * techs.length)];
+          
+          const techData: Record<string, { color: string; size: number }> = {
+            react: { color: "rgba(97, 218, 251, ", size: Math.random() * 4.0 + 10.0 },
+            vercel: { color: "rgba(255, 255, 255, ", size: Math.random() * 3.0 + 8.0 },
+            nextjs: { color: "rgba(255, 255, 255, ", size: Math.random() * 4.0 + 10.0 },
+            n8n: { color: "rgba(255, 109, 90, ", size: Math.random() * 4.0 + 10.0 },
+            capacitor: { color: "rgba(17, 158, 255, ", size: Math.random() * 4.0 + 9.0 },
+            tailwind: { color: "rgba(56, 178, 172, ", size: Math.random() * 4.0 + 9.0 },
+            github: { color: "rgba(240, 246, 252, ", size: Math.random() * 3.0 + 9.0 },
+            wordpress: { color: "rgba(33, 117, 155, ", size: Math.random() * 4.0 + 10.0 }
+          };
+          const data = techData[p.techName];
+          p.color = data.color;
+          p.size = data.size;
+          p.maxOpacity = Math.random() * 0.5 + 0.45;
+        } else if (roll < 0.45) {
           p.type = "text";
           const chars = ["0", "1", "{", "}", "<", ">", "+", "*", ";"];
           p.char = chars[Math.floor(Math.random() * chars.length)];
+          p.color = "rgba(34, 211, 238, ";
+          p.size = Math.random() * 2.0 + 0.8;
+          p.maxOpacity = Math.random() * 0.6 + 0.2;
         } else {
           p.type = "circle";
+          const streamColors = [
+            "rgba(34, 211, 238, ",
+            "rgba(56, 189, 248, ",
+            "rgba(251, 146, 60, ",
+            "rgba(245, 158, 11, ",
+          ];
+          p.color = streamColors[Math.floor(Math.random() * streamColors.length)];
+          p.size = Math.random() * 2.0 + 0.7;
+          p.maxOpacity = Math.random() * 0.6 + 0.2;
         }
-
-        // Stream colors: Cyan, Light Blue, Golden Amber
-        const streamColors = [
-          "rgba(34, 211, 238, ",  // Cyan
-          "rgba(56, 189, 248, ",  // Light Blue (Sky)
-          "rgba(251, 146, 60, ",  // Golden Orange
-          "rgba(245, 158, 11, ",  // Golden Amber
-        ];
-        p.color = streamColors[Math.floor(Math.random() * streamColors.length)];
-        p.size = Math.random() * 2.0 + 0.7;
-        p.maxOpacity = Math.random() * 0.6 + 0.2;
-        p.opacity = 0; // Fade in
+        p.opacity = 0;
       } else {
         // Ambient background stars
         p.x = Math.random() * canvas.width;
         p.y = Math.random() * canvas.height;
-        p.vx = (Math.random() - 0.5) * 0.25; // slow drift
-        p.vy = (Math.random() - 0.5) * 0.25;
+        p.vx = (Math.random() - 0.5) * 0.15;
+        p.vy = (Math.random() - 0.5) * 0.15;
         p.life = Math.random() * 200;
         p.maxLife = Math.random() * 300 + 200;
         p.type = "circle";
         const ambientColors = [
-          "rgba(148, 163, 184, ", // Slate
-          "rgba(203, 213, 225, ", // Light Gray
-          "rgba(6, 182, 212, ",   // Faint Cyan
+          "rgba(148, 163, 184, ",
+          "rgba(203, 213, 225, ",
+          "rgba(6, 182, 212, ",
         ];
         p.color = ambientColors[Math.floor(Math.random() * ambientColors.length)];
         p.size = Math.random() * 1.4 + 0.4;
-        p.maxOpacity = Math.random() * 0.2 + 0.05; // faint ambient glow
+        p.maxOpacity = Math.random() * 0.2 + 0.05;
         p.opacity = p.maxOpacity;
       }
     };
@@ -131,14 +324,14 @@ function Particles() {
 
         if (p.isStream) {
           p.x += p.vx;
-          // Soft gravity pull to cascade downwards across typography
-          p.vy += 0.003;
+          // Soft gravity pull to cascade downwards across typography (much smaller value)
+          p.vy += 0.0006;
           p.y += p.vy + Math.sin(p.x * 0.003 + (p.phase ?? 0)) * (p.waveAmp ?? 0);
 
-          // Slow down and float gently as they disperse
-          if (p.x > emitterX + 220) {
-            p.vx = p.vx * 0.985 + (Math.random() - 0.5) * 0.01;
-            p.vy = p.vy * 0.985 + (Math.random() - 0.5) * 0.02;
+          // Slow down and float gently as they disperse (further to the right)
+          if (p.x > emitterX + 600 || p.x > canvas.width * 0.5) {
+            p.vx = p.vx * 0.992 + (Math.random() - 0.5) * 0.005;
+            p.vy = p.vy * 0.992 + (Math.random() - 0.5) * 0.01;
           }
 
           // Fade-in / Fade-out bounds
@@ -183,6 +376,13 @@ function Particles() {
           ctx.font = `bold ${Math.round(p.size * 5.5 + 7)}px monospace`;
           ctx.fillStyle = p.color + Math.max(0, p.opacity) + ")";
           ctx.fillText(p.char || "", p.x, p.y);
+        } else if (p.type === "tech") {
+          // Enable glowing effect for tech icons
+          ctx.save();
+          ctx.shadowColor = p.color.replace(", ", ", 1)");
+          ctx.shadowBlur = p.size * 1.5;
+          drawTechIcon(ctx, p.x, p.y, p.size, p.techName || "", p.color + Math.max(0, p.opacity) + ")");
+          ctx.restore();
         }
       });
 
