@@ -507,7 +507,7 @@ export default function Hero() {
         </div>
 
         {/* Dashboard mockup */}
-        <div className="animate-fade-up animate-delay-500 mt-16 sm:mt-20 relative">
+        <div className="animate-fade-up animate-delay-500 mt-12 sm:mt-16 relative">
           <div className="relative mx-auto max-w-4xl rounded-2xl border border-border-light overflow-hidden shadow-2xl shadow-black/40">
             {/* Browser chrome */}
             <div className="flex items-center gap-2 px-4 py-3 bg-navy-light border-b border-border">
@@ -528,7 +528,7 @@ export default function Hero() {
             </div>
             {/* Dashboard content */}
             <div className="bg-navy-light p-6 sm:p-8">
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 {[
                   { label: "Satisfied clients", value: "48", change: "+12%", color: "text-cyan" },
                   { label: "Active workflows", value: "128", change: "+18%", color: "text-green-400" },
@@ -543,30 +543,6 @@ export default function Hero() {
                     <p className="text-xs text-green-400 mt-1">{stat.change}</p>
                   </div>
                 ))}
-              </div>
-              {/* Chart placeholder */}
-              <div className="glass-card rounded-xl p-4 sm:p-6">
-                <div className="flex items-center justify-between mb-4">
-                  <p className="text-sm font-semibold text-text-secondary" style={{ fontFamily: "var(--font-heading)" }}>Automation Performance</p>
-                  <div className="flex gap-3 text-xs text-text-muted">
-                    <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-orange" />Workflows</span>
-                    <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-cyan" />Tasks</span>
-                  </div>
-                </div>
-                <div className="flex items-end gap-1 h-24 sm:h-32">
-                  {[40, 65, 45, 80, 55, 90, 70, 95, 60, 85, 75, 100].map((h, i) => (
-                    <div key={i} className="flex-1 flex flex-col gap-1">
-                      <div
-                        className="w-full rounded-sm bg-gradient-to-t from-orange/60 to-orange/20"
-                        style={{ height: `${h * 0.8}%` }}
-                      />
-                      <div
-                        className="w-full rounded-sm bg-gradient-to-t from-cyan/60 to-cyan/20"
-                        style={{ height: `${h * 0.5}%` }}
-                      />
-                    </div>
-                  ))}
-                </div>
               </div>
             </div>
           </div>
