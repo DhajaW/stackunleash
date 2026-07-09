@@ -216,7 +216,7 @@ export default function Footer() {
               {[
                 { icon: LinkedInIcon, label: "LinkedIn", href: "https://www.linkedin.com/in/stackunleash/" },
                 { icon: XIcon, label: "X (Twitter)", href: "https://x.com/StackUnleash" },
-                { icon: YouTubeIcon, label: "YouTube", href: "#" },
+                { icon: YouTubeIcon, label: "YouTube", href: "https://www.youtube.com/@stackunleash" },
                 { icon: FacebookIcon, label: "Facebook", href: "https://www.facebook.com/stackunleash/" },
               ].map((social) => {
                 const Icon = social.icon;
