@@ -52,13 +52,21 @@ export default function Header() {
           <div className="transition-transform duration-300 group-hover:scale-110">
             <img id="logo-icon-img" src="/logo-icon.png" alt="StackUnleash Icon" className="h-14 w-auto object-contain" />
           </div>
-          <span
-            className="text-2xl font-black tracking-tight"
-            style={{ fontFamily: "var(--font-heading)" }}
-          >
-            <span className="text-white">STACK</span>
-            <span className="gradient-text">UNLEASH</span>
-          </span>
+          <div className="flex flex-col items-start">
+            <span
+              className="text-2xl font-black tracking-tight leading-none"
+              style={{ fontFamily: "var(--font-heading)" }}
+            >
+              <span className="text-white">STACK</span>
+              <span className="gradient-text">UNLEASH</span>
+            </span>
+            <span
+              className="text-[8px] font-black tracking-[0.22em] uppercase mt-1.5 shine-text"
+              style={{ fontFamily: "var(--font-heading)" }}
+            >
+              Build &bull; Automate &bull; Scale
+            </span>
+          </div>
         </a>
 
         {/* Desktop Nav */}

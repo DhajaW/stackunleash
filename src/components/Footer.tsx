@@ -113,13 +113,21 @@ export default function Footer() {
               <div className="transition-transform duration-300 group-hover:scale-110">
                 <img src="/logo-icon.png" alt="StackUnleash Icon" className="h-10 w-auto object-contain" />
               </div>
-              <span
-                className="text-base font-extrabold tracking-tight"
-                style={{ fontFamily: "var(--font-heading)" }}
-              >
-                <span className="text-white">STACK</span>
-                <span className="gradient-text">UNLEASH</span>
-              </span>
+              <div className="flex flex-col items-start">
+                <span
+                  className="text-base font-extrabold tracking-tight leading-none"
+                  style={{ fontFamily: "var(--font-heading)" }}
+                >
+                  <span className="text-white">STACK</span>
+                  <span className="gradient-text">UNLEASH</span>
+                </span>
+                <span
+                  className="text-[7px] font-extrabold tracking-[0.20em] uppercase mt-1 shine-text"
+                  style={{ fontFamily: "var(--font-heading)" }}
+                >
+                  Build &bull; Automate &bull; Scale
+                </span>
+              </div>
             </a>
             <p
               className="text-sm text-text-muted leading-relaxed max-w-xs"
