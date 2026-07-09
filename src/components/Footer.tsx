@@ -215,7 +215,7 @@ export default function Footer() {
             <div className="flex items-center gap-3 mt-6">
               {[
                 { icon: LinkedInIcon, label: "LinkedIn", href: "https://www.linkedin.com/in/stackunleash/" },
-                { icon: XIcon, label: "X (Twitter)", href: "#" },
+                { icon: XIcon, label: "X (Twitter)", href: "https://x.com/StackUnleash" },
                 { icon: YouTubeIcon, label: "YouTube", href: "#" },
                 { icon: FacebookIcon, label: "Facebook", href: "https://www.facebook.com/stackunleash/" },
               ].map((social) => {
