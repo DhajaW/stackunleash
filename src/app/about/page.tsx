@@ -69,6 +69,51 @@ export default function AboutPage() {
           </div>
         </section>
 
+        {/* Our Story & Vision/Mission Section */}
+        <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+            {/* Our Story (Left) */}
+            <div className="lg:col-span-7 space-y-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange/10 border border-orange/20 text-orange text-xs font-semibold">
+                <span className="w-1.5 h-1.5 rounded-full bg-orange animate-pulse"></span>
+                Our Origin
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-white" style={{ fontFamily: "var(--font-heading)" }}>
+                Our Story
+              </h2>
+              <p className="text-text-secondary text-base leading-relaxed">
+                StackUnleash began with a simple observation: businesses were spending countless hours on repetitive, manual tasks like copying data between spreadsheets, chasing contractor approvals, and manually routing client messages. 
+              </p>
+              <p className="text-text-secondary text-base leading-relaxed">
+                Founded by Thusitha Weerasinghe, we started as a small group of systems architects dedicated to building bulletproof automations. Today, we engineer custom AI workflows, secure client portals, and hybrid mobile integrations that help global teams scale efficiently.
+              </p>
+            </div>
+
+            {/* Vision & Mission (Right) */}
+            <div className="lg:col-span-5 space-y-8 lg:pl-6">
+              {/* Vision */}
+              <div className="glass-card p-6 rounded-2xl border border-white/5">
+                <h3 className="text-lg font-bold text-white mb-2" style={{ fontFamily: "var(--font-heading)" }}>
+                  Our Vision
+                </h3>
+                <p className="text-text-secondary text-sm leading-relaxed">
+                  To build a world where humans are liberated from digital assembly lines, enabling them to focus entirely on creative growth and strategic breakthroughs.
+                </p>
+              </div>
+
+              {/* Mission */}
+              <div className="glass-card p-6 rounded-2xl border border-white/5">
+                <h3 className="text-lg font-bold text-cyan mb-2" style={{ fontFamily: "var(--font-heading)" }}>
+                  Our Mission
+                </h3>
+                <p className="text-text-secondary text-sm leading-relaxed">
+                  To engineer robust, transparent, and high-performance automation ecosystems that eliminate operational bottlenecks, enforce zero-trust security standards, and guarantee 100% code ownership to our partners.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* E-E-A-T Trust Section */}
         <section className="bg-navy-light/40 border-y border-border py-20 mb-24">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -251,6 +296,27 @@ export default function AboutPage() {
                 </div>
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* Contact Us CTA Section */}
+        <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-24 mb-12">
+          <div className="relative glass-card p-10 sm:p-12 rounded-3xl border border-white/10 overflow-hidden bg-navy-light/40">
+            {/* Glow effect */}
+            <div className="absolute -inset-10 rounded-full bg-gradient-to-r from-cyan/10 to-orange/10 opacity-30 blur-2xl pointer-events-none"></div>
+            
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4" style={{ fontFamily: "var(--font-heading)" }}>
+              Ready to Unleash Your Systems?
+            </h2>
+            <p className="text-text-secondary text-base max-w-xl mx-auto mb-8">
+              Get in touch with Thusitha and the team to review your automation roadmap and eliminate operational bottlenecks.
+            </p>
+            <a 
+              href="/contact" 
+              className="btn-primary px-8 py-4 text-base font-bold glow-orange inline-flex items-center gap-2"
+            >
+              Contact Us <ArrowUpRight className="w-4 h-4" />
+            </a>
           </div>
         </section>
 

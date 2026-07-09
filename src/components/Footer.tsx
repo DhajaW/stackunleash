@@ -59,7 +59,7 @@ function XIcon({ className }: { className?: string }) {
   );
 }
 
-function PinterestIcon({ className }: { className?: string }) {
+function FacebookIcon({ className }: { className?: string }) {
   return (
     <svg
       className={className}
@@ -67,7 +67,7 @@ function PinterestIcon({ className }: { className?: string }) {
       fill="currentColor"
       aria-hidden="true"
     >
-      <path d="M12 0a12 12 0 0 0-4.373 23.17c-.1-.937-.188-2.376.04-3.4l1.282-5.434s-.327-.655-.327-1.623c0-1.52.881-2.655 1.978-2.655.933 0 1.383.7 1.383 1.54 0 .938-.597 2.342-.905 3.645-.257 1.087.546 1.974 1.62 1.974 1.944 0 3.44-2.05 3.44-5.009 0-2.62-1.884-4.452-4.576-4.452-3.117 0-4.947 2.338-4.947 4.754 0 .942.363 1.953.816 2.502a.327.327 0 0 1 .076.315l-.305 1.245c-.048.202-.159.244-.368.147-1.372-.638-2.229-2.642-2.229-4.253 0-3.462 2.515-6.64 7.252-6.64 3.808 0 6.765 2.714 6.765 6.341 0 3.783-2.384 6.828-5.694 6.828-1.112 0-2.157-.578-2.515-1.26l-.684 2.608c-.248.952-.917 2.144-1.365 2.872A12 12 0 1 0 12 0z" />
+      <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1V12h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z" />
     </svg>
   );
 }
@@ -209,7 +209,7 @@ export default function Footer() {
                 { icon: LinkedInIcon, label: "LinkedIn", href: "#" },
                 { icon: XIcon, label: "X (Twitter)", href: "#" },
                 { icon: YouTubeIcon, label: "YouTube", href: "#" },
-                { icon: PinterestIcon, label: "Pinterest", href: "#" },
+                { icon: FacebookIcon, label: "Facebook", href: "#" },
               ].map((social) => {
                 const Icon = social.icon;
                 return (

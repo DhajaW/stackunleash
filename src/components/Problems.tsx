@@ -17,7 +17,7 @@ const problems = [
     icon: Database,
     title: "The Spreadsheet Trap",
     description:
-      "Critical business data scattered across disconnected spreadsheets.",
+      "Critical business data scattered across disconnected spreadsheets can be a hassle to manage.",
     color: "text-red-400",
     borderColor: "hover:border-red-400/30",
     bgGlow: "rgba(248, 113, 113, 0.04)",
@@ -26,7 +26,7 @@ const problems = [
     icon: Workflow,
     title: "Chasing Contractors",
     description:
-      "Manual approvals, billing delays, and operational bottlenecks. e.g., automatically verifying contractor mobilization totals exactly match Rs. 3,970,540.00 before committee approval.",
+      "Manual approvals, billing delays, and operational bottlenecks. e.g., automatically verifying contractor mobilization totals exactly match $3,970,540.00 before committee approval.",
     color: "text-amber-400",
     borderColor: "hover:border-amber-400/30",
     bgGlow: "rgba(251, 191, 36, 0.04)",

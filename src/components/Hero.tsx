@@ -291,8 +291,8 @@ export default function Hero() {
           className="animate-fade-up animate-delay-200 max-w-2xl mx-auto text-base sm:text-lg md:text-xl text-text-secondary leading-relaxed mb-10"
           style={{ fontFamily: "var(--font-body)" }}
         >
-          We build custom AI workflows, enterprise portals, and mobile apps
-          custom-tailored for your business acceleration.
+          We build custom AI workflows, enterprise portals, commercial/professional websites, and mobile apps
+          custom-tailored for your business.
         </p>
 
         {/* Buttons */}
@@ -328,12 +328,11 @@ export default function Hero() {
             </div>
             {/* Dashboard content */}
             <div className="bg-navy-light p-6 sm:p-8">
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
                 {[
-                  { label: "Active Workflows", value: "128", change: "+12%", color: "text-cyan" },
-                  { label: "Tasks Automated", value: "3,847", change: "+28%", color: "text-green-400" },
-                  { label: "Avg Response", value: "0.3s", change: "-45%", color: "text-orange" },
-                  { label: "Uptime", value: "99.98%", change: "+0.1%", color: "text-cyan" },
+                  { label: "Satisfied clients", value: "48", change: "+12%", color: "text-cyan" },
+                  { label: "Active workflows", value: "128", change: "+18%", color: "text-green-400" },
+                  { label: "Tasks automated", value: "3,847", change: "+24%", color: "text-orange" },
                 ].map((stat) => (
                   <div
                     key={stat.label}
