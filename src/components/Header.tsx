@@ -33,90 +33,92 @@ export default function Header() {
   }, [mobileOpen]);
 
   return (
-    <header
-      id="site-header"
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "glass shadow-lg shadow-black/20 py-2"
-          : "bg-transparent py-4"
-      }`}
-    >
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-[80px]">
-        {/* Logo */}
-        <a
-          href="/#hero"
-          id="logo-link"
-          className="flex items-center gap-3.5 group"
-          aria-label="StackUnleash Home"
-        >
-          <div className="transition-transform duration-300 group-hover:scale-110">
-            <img id="logo-icon-img" src="/logo-icon.png" alt="StackUnleash Icon" className="h-14 w-auto object-contain" />
-          </div>
-          <div className="flex flex-col items-start">
-            <span
-              className="text-2xl font-black tracking-tight leading-none"
-              style={{ fontFamily: "var(--font-heading)" }}
-            >
-              <span className="text-white">STACK</span>
-              <span className="gradient-text">UNLEASH</span>
-            </span>
-            <span
-              className="text-[8px] font-black tracking-[0.22em] uppercase mt-1.5 shine-text"
-              style={{ fontFamily: "var(--font-heading)" }}
-            >
-              Build &bull; Automate &bull; Scale
-            </span>
-          </div>
-        </a>
-
-        {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-10">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              id={`nav-${link.label.toLowerCase().replace(/\s/g, "-")}`}
-              className="text-base font-semibold text-text-secondary hover:text-white transition-colors duration-300 relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-orange after:transition-all after:duration-300 hover:after:w-full"
-              style={{ fontFamily: "var(--font-body)" }}
-            >
-              {link.label}
-            </a>
-          ))}
-        </div>
-
-        {/* CTA */}
-        <div className="hidden md:block">
+    <>
+      <header
+        id="site-header"
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          scrolled
+            ? "glass shadow-lg shadow-black/20 py-2"
+            : "bg-transparent py-4"
+        }`}
+      >
+        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-[80px]">
+          {/* Logo */}
           <a
-            href="/contact"
-            id="header-cta"
-            className="btn-primary text-base px-6 py-3 glow-orange glow-orange-hover font-bold"
+            href="/#hero"
+            id="logo-link"
+            className="flex items-center gap-3.5 group"
+            aria-label="StackUnleash Home"
           >
-            Book Strategy Call
+            <div className="transition-transform duration-300 group-hover:scale-110">
+              <img id="logo-icon-img" src="/logo-icon.png" alt="StackUnleash Icon" className="h-14 w-auto object-contain" />
+            </div>
+            <div className="flex flex-col items-start">
+              <span
+                className="text-2xl font-black tracking-tight leading-none"
+                style={{ fontFamily: "var(--font-heading)" }}
+              >
+                <span className="text-white">STACK</span>
+                <span className="gradient-text">UNLEASH</span>
+              </span>
+              <span
+                className="text-[8px] font-black tracking-[0.22em] uppercase mt-1.5 shine-text"
+                style={{ fontFamily: "var(--font-heading)" }}
+              >
+                Build &bull; Automate &bull; Scale
+              </span>
+            </div>
           </a>
-        </div>
 
-        {/* Mobile Toggle */}
-        <button
-          id="mobile-menu-toggle"
-          className="md:hidden text-white p-2 rounded-lg hover:bg-white/5 transition-colors"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label="Toggle menu"
-          aria-expanded={mobileOpen}
-        >
-          {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-        </button>
-      </nav>
+          {/* Desktop Nav */}
+          <div className="hidden md:flex items-center gap-10">
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                id={`nav-${link.label.toLowerCase().replace(/\s/g, "-")}`}
+                className="text-base font-semibold text-text-secondary hover:text-white transition-colors duration-300 relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-orange after:transition-all after:duration-300 hover:after:w-full"
+                style={{ fontFamily: "var(--font-body)" }}
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+
+          {/* CTA */}
+          <div className="hidden md:block">
+            <a
+              href="/contact"
+              id="header-cta"
+              className="btn-primary text-base px-6 py-3 glow-orange glow-orange-hover font-bold"
+            >
+              Book Strategy Call
+            </a>
+          </div>
+
+          {/* Mobile Toggle */}
+          <button
+            id="mobile-menu-toggle"
+            className="md:hidden text-white p-2 rounded-lg hover:bg-white/5 transition-colors"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label="Toggle menu"
+            aria-expanded={mobileOpen}
+          >
+            {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
+        </nav>
+      </header>
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden fixed inset-0 top-[112px] z-40 transition-all duration-300 ${
+        className={`md:hidden fixed inset-0 z-40 transition-all duration-300 ${
           mobileOpen
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
         }`}
       >
         <div className="absolute inset-0 bg-navy/95 backdrop-blur-xl" />
-        <div className="relative flex flex-col items-center justify-center gap-8 pt-16">
+        <div className="relative flex flex-col items-center gap-8 pt-36">
           {navLinks.map((link) => (
             <a
               key={link.href}
@@ -139,6 +141,6 @@ export default function Header() {
           </a>
         </div>
       </div>
-    </header>
+    </>
   );
 }
