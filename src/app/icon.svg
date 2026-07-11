@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <!-- Gradient for the outer border/ring -->
+    <linearGradient id="border-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00D8FF" />
+      <stop offset="50%" stop-color="#6366F1" />
+      <stop offset="100%" stop-color="#8B5CF6" />
+    </linearGradient>
+    
+    <!-- Gradient for the breakout arrow -->
+    <linearGradient id="arrow-grad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#06B6D4" />
+      <stop offset="100%" stop-color="#E0F7FA" />
+    </linearGradient>
+    
+    <!-- Neon cyan glow filter -->
+    <filter id="neon-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="16" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Hexagonal Background Shield (R=240) -->
+  <polygon points="256,16 463.85,136 463.85,376 256,496 48.15,376 48.15,136" fill="url(#border-grad)" />
+  
+  <!-- Inner Deep Navy Shield (R=208) -->
+  <polygon points="256,48 436.1,152 436.1,360 256,464 75.9,360 75.9,152" fill="#0F172A" />
+
+  <!-- Glowing Breakout Arrow Burst -->
+  <path d="M144 384 L272 256 H208 L336 128 L304 288 H368 L144 384 Z" fill="url(#arrow-grad)" filter="url(#neon-glow)" />
+</svg>
