@@ -76,7 +76,7 @@ export default function Footer() {
   return (
     <footer className="relative border-t border-border" role="contentinfo">
       {/* CTA strip */}
-      <div className="bg-gradient-to-r from-orange/5 via-orange/10 to-orange/5 border-b border-border">
+      <div className="bg-gradient-to-r from-cyan/[0.03] via-cyan/[0.08] to-cyan/[0.03] border-b border-white/[0.06] bg-navy-light/25">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex flex-col sm:flex-row items-center justify-between gap-6">
           <div>
             <h3
