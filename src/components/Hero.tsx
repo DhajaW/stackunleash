@@ -280,23 +280,44 @@ function Particles() {
         }
         p.opacity = 0;
       } else {
-        // Ambient background stars
+        // Ambient background stars and ghosted tech particles
         p.x = Math.random() * canvas.width;
         p.y = Math.random() * canvas.height;
-        p.vx = (Math.random() - 0.5) * 0.15;
-        p.vy = (Math.random() - 0.5) * 0.15;
+        p.vx = (Math.random() - 0.5) * 0.08; // Slower float speed
+        p.vy = (Math.random() - 0.5) * 0.08;
         p.life = Math.random() * 200;
-        p.maxLife = Math.random() * 300 + 200;
-        p.type = "circle";
-        const ambientColors = [
-          "rgba(148, 163, 184, ",
-          "rgba(203, 213, 225, ",
-          "rgba(6, 182, 212, ",
-        ];
-        p.color = ambientColors[Math.floor(Math.random() * ambientColors.length)];
-        p.size = Math.random() * 1.4 + 0.4;
-        p.maxOpacity = Math.random() * 0.2 + 0.05;
-        p.opacity = p.maxOpacity;
+        p.maxLife = Math.random() * 400 + 300; // Longer lifecycle
+        p.phase = Math.random() * Math.PI * 2;
+
+        const ambientRoll = Math.random();
+        if (ambientRoll < 0.15) {
+          // 15% Ambient ghosted tech icons
+          p.type = "tech";
+          const techs = ["react", "vercel", "nextjs", "n8n", "capacitor", "tailwind", "github", "wordpress"];
+          p.techName = techs[Math.floor(Math.random() * techs.length)];
+          
+          const techColors = [
+            "rgba(255, 255, 255, ", // Subtle white glow
+            "rgba(6, 182, 212, ",   // Subtle cyan glow
+            "rgba(251, 146, 60, ",   // Subtle orange glow
+          ];
+          p.color = techColors[Math.floor(Math.random() * techColors.length)];
+          p.size = Math.random() * 8.0 + 12.0; // Fills 12px to 20px
+          p.maxOpacity = Math.random() * 0.10 + 0.03; // Very low opacity (3% to 13%) for clean UI focus
+        } else {
+          // 85% Ambient stars (circles)
+          p.type = "circle";
+          const ambientColors = [
+            "rgba(148, 163, 184, ",
+            "rgba(203, 213, 225, ",
+            "rgba(6, 182, 212, ",
+            "rgba(251, 146, 60, ",
+          ];
+          p.color = ambientColors[Math.floor(Math.random() * ambientColors.length)];
+          p.size = Math.random() * 2.2 + 0.8; // Various sizes: 0.8px to 3.0px
+          p.maxOpacity = Math.random() * 0.35 + 0.1; // Better visibility
+        }
+        p.opacity = 0; // Fade-in initial state
       }
     };
 
@@ -361,6 +382,23 @@ function Particles() {
           if (p.y < 0) p.y = canvas.height;
           if (p.y > canvas.height) p.y = 0;
 
+          // Fade-in, Twinkle, and Fade-out logic
+          let currentMaxOpacity = p.maxOpacity;
+          
+          // Organic twinkle effect (sine wave oscillation between 30% and 100% maxOpacity)
+          const twinkle = 0.65 + 0.35 * Math.sin(p.life * 0.015 + p.phase);
+          currentMaxOpacity *= twinkle;
+
+          if (p.life < 80) {
+            // Smooth fade-in
+            p.opacity = (p.life / 80) * currentMaxOpacity;
+          } else if (p.life > p.maxLife - 80) {
+            // Smooth fade-out
+            p.opacity = ((p.maxLife - p.life) / 80) * currentMaxOpacity;
+          } else {
+            p.opacity = currentMaxOpacity;
+          }
+
           if (p.life >= p.maxLife) {
             resetParticle(p, false);
           }
@@ -379,8 +417,9 @@ function Particles() {
         } else if (p.type === "tech") {
           // Enable glowing effect for tech icons
           ctx.save();
-          ctx.shadowColor = p.color.replace(", ", ", 1)");
-          ctx.shadowBlur = p.size * 1.5;
+          // Use current opacity for shadowColor to make fade transitions smooth
+          ctx.shadowColor = p.color + Math.max(0, p.opacity) + ")";
+          ctx.shadowBlur = p.size * 1.2;
           drawTechIcon(ctx, p.x, p.y, p.size, p.techName || "", p.color + Math.max(0, p.opacity) + ")");
           ctx.restore();
         }
