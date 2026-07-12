@@ -148,7 +148,8 @@ export default function AboutPage() {
               </div>
               
               <div className="relative">
-                <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-cyan to-orange opacity-25 blur-lg"></div>
+                <div className="absolute -inset-[1px] rounded-2xl bg-gradient-to-r from-cyan/30 to-orange/30 opacity-75 blur-[3px]"></div>
+                <div className="absolute inset-4 rounded-2xl bg-gradient-to-r from-cyan/5 to-orange/5 blur-2xl -z-10"></div>
                 <div className="relative glass p-8 rounded-2xl border border-white/10">
                   <h3 className="text-lg font-bold text-white mb-4" style={{ fontFamily: "var(--font-heading)" }}>
                     Our Technology Credentials
