@@ -386,7 +386,7 @@ function Particles() {
           let currentMaxOpacity = p.maxOpacity;
           
           // Organic twinkle effect (sine wave oscillation between 30% and 100% maxOpacity)
-          const twinkle = 0.65 + 0.35 * Math.sin(p.life * 0.015 + p.phase);
+          const twinkle = 0.65 + 0.35 * Math.sin(p.life * 0.015 + (p.phase ?? 0));
           currentMaxOpacity *= twinkle;
 
           if (p.life < 80) {
