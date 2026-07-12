@@ -195,7 +195,8 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
             {/* Thusitha */}
             <div className="relative group">
-              <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-cyan to-orange opacity-30 blur-md group-hover:opacity-50 transition-opacity duration-300"></div>
+              <div className="absolute -inset-[1px] rounded-2xl bg-gradient-to-r from-cyan/40 to-blue-600/20 opacity-75 group-hover:opacity-100 transition-all duration-300 blur-[3px] group-hover:blur-[5px]"></div>
+              <div className="absolute inset-4 rounded-2xl bg-cyan/5 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
               <div className="relative glass-card p-8 rounded-2xl border border-white/10 text-center h-full flex flex-col justify-between">
                 <div>
                   <div className="w-24 h-24 rounded-full bg-gradient-to-tr from-cyan to-orange mx-auto mb-6 flex items-center justify-center text-white text-3xl font-black tracking-wider shadow-inner shadow-black/40 border-2 border-white/10">
@@ -221,7 +222,8 @@ export default function AboutPage() {
 
             {/* Asanka */}
             <div className="relative group">
-              <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-cyan to-orange opacity-30 blur-md group-hover:opacity-50 transition-opacity duration-300"></div>
+              <div className="absolute -inset-[1px] rounded-2xl bg-gradient-to-r from-orange/40 to-red-600/20 opacity-75 group-hover:opacity-100 transition-all duration-300 blur-[3px] group-hover:blur-[5px]"></div>
+              <div className="absolute inset-4 rounded-2xl bg-orange/5 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
               <div className="relative glass-card p-8 rounded-2xl border border-white/10 text-center h-full flex flex-col justify-between">
                 <div>
                   <div className="w-24 h-24 rounded-full bg-gradient-to-tr from-cyan to-orange mx-auto mb-6 flex items-center justify-center text-white text-3xl font-black tracking-wider shadow-inner shadow-black/40 border-2 border-white/10">
@@ -247,7 +249,8 @@ export default function AboutPage() {
 
             {/* Udaya */}
             <div className="relative group">
-              <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-cyan to-orange opacity-30 blur-md group-hover:opacity-50 transition-opacity duration-300"></div>
+              <div className="absolute -inset-[1px] rounded-2xl bg-gradient-to-r from-violet-500/40 to-fuchsia-600/20 opacity-75 group-hover:opacity-100 transition-all duration-300 blur-[3px] group-hover:blur-[5px]"></div>
+              <div className="absolute inset-4 rounded-2xl bg-violet-500/5 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
               <div className="relative glass-card p-8 rounded-2xl border border-white/10 text-center h-full flex flex-col justify-between">
                 <div>
                   <div className="w-24 h-24 rounded-full bg-gradient-to-tr from-cyan to-orange mx-auto mb-6 flex items-center justify-center text-white text-3xl font-black tracking-wider shadow-inner shadow-black/40 border-2 border-white/10">
@@ -273,7 +276,8 @@ export default function AboutPage() {
 
             {/* Hiran */}
             <div className="relative group">
-              <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-cyan to-orange opacity-30 blur-md group-hover:opacity-50 transition-opacity duration-300"></div>
+              <div className="absolute -inset-[1px] rounded-2xl bg-gradient-to-r from-cyan/40 to-emerald-600/20 opacity-75 group-hover:opacity-100 transition-all duration-300 blur-[3px] group-hover:blur-[5px]"></div>
+              <div className="absolute inset-4 rounded-2xl bg-cyan/5 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
               <div className="relative glass-card p-8 rounded-2xl border border-white/10 text-center h-full flex flex-col justify-between">
                 <div>
                   <div className="w-24 h-24 rounded-full bg-gradient-to-tr from-cyan to-orange mx-auto mb-6 flex items-center justify-center text-white text-3xl font-black tracking-wider shadow-inner shadow-black/40 border-2 border-white/10">

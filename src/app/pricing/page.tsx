@@ -202,7 +202,8 @@ export default function PricingPage() {
               {/* Total Invoice Card (Right) */}
               <div className="lg:col-span-5">
                 <div className="sticky top-32 relative">
-                  <div className="absolute -inset-1.5 rounded-2xl bg-gradient-to-r from-cyan to-orange opacity-20 blur-md"></div>
+                  <div className="absolute -inset-[1px] rounded-2xl bg-gradient-to-r from-cyan/30 to-orange/30 opacity-75 blur-[3px]"></div>
+                  <div className="absolute inset-4 rounded-2xl bg-gradient-to-r from-cyan/5 to-orange/5 blur-2xl -z-10"></div>
                   
                   <div className="relative glass-card p-8 rounded-2xl border border-white/10 bg-navy-light/60">
                     <div className="flex items-center gap-2 text-cyan font-bold text-xs uppercase tracking-wider mb-6">
