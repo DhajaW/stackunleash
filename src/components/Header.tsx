@@ -36,11 +36,21 @@ export default function Header() {
     <>
       <header
         id="site-header"
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? "glass shadow-lg shadow-black/20 py-2"
-            : "bg-transparent py-4"
+            ? "py-2 shadow-xl shadow-black/30"
+            : "py-4"
         }`}
+        style={{
+          background: scrolled
+            ? "rgba(10, 16, 33, 0.92)"
+            : "linear-gradient(to bottom, rgba(10, 16, 33, 0.85) 0%, rgba(10, 16, 33, 0.6) 60%, rgba(10, 16, 33, 0) 100%)",
+          backdropFilter: scrolled ? "blur(20px)" : "blur(8px)",
+          WebkitBackdropFilter: scrolled ? "blur(20px)" : "blur(8px)",
+          borderBottom: scrolled
+            ? "1px solid rgba(255, 255, 255, 0.07)"
+            : "none",
+        }}
       >
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-[80px]">
           {/* Logo */}
