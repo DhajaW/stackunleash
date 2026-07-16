@@ -3,7 +3,7 @@
 import React, { useState, useEffect, Suspense } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Mail, Clock, MapPin, Send, CheckCircle2, AlertCircle, RefreshCw } from "lucide-react";
+import { Mail, Clock, MapPin, Send, CheckCircle2, AlertCircle, RefreshCw, Phone } from "lucide-react";
 import { useSearchParams } from "next/navigation";
 
 // Form Content Component that reads search parameters
@@ -300,6 +300,19 @@ export default function ContactPage() {
                 </div>
 
                 <div className="flex gap-4 items-start">
+                  <div className="w-10 h-10 rounded-lg bg-teal-500/10 border border-teal-500/20 flex items-center justify-center text-teal-400 flex-shrink-0">
+                    <Phone className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-white text-sm">Call & WhatsApp Support</h4>
+                    <div className="flex flex-col gap-1 text-sm text-text-secondary mt-1">
+                      <a href="tel:+94757922199" className="hover:text-cyan transition-colors duration-200">+94 75792 2199</a>
+                      <a href="tel:+94713080010" className="hover:text-cyan transition-colors duration-200">+94 71 30 800 10</a>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex gap-4 items-start">
                   <div className="w-10 h-10 rounded-lg bg-orange/10 border border-orange/20 flex items-center justify-center text-orange flex-shrink-0">
                     <Clock className="w-5 h-5" />
                   </div>
@@ -315,7 +328,11 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-white text-sm">Global HQ & Operations</h4>
-                    <p className="text-sm text-text-secondary">Colombo, Sri Lanka & Serving Clients Worldwide</p>
+                    <p className="text-sm text-text-secondary leading-relaxed">
+                      Stack Unleash, <br />
+                      18, Rajawella 02, <br />
+                      Rajawella, Kandy, Sri Lanka.
+                    </p>
                   </div>
                 </div>
               </div>

@@ -87,12 +87,16 @@ export default function RootLayout({
     "priceRange": "$$",
     "address": {
       "@type": "PostalAddress",
+      "streetAddress": "18, Rajawella 02",
+      "addressLocality": "Rajawella, Kandy",
       "addressCountry": "LK",
     },
+    "telephone": "+94757922199",
     "contactPoint": {
       "@type": "ContactPoint",
       "contactType": "sales",
       "email": "hello@stackunleash.com",
+      "telephone": "+94757922199",
       "url": "https://stackunleash.com/#discovery",
     },
   };

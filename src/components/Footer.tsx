@@ -1,6 +1,6 @@
 "use client";
 
-import { Mail, MapPin } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 
 const footerLinks = {
   services: [
@@ -203,10 +203,32 @@ export default function Footer() {
                   hello@stackunleash.com
                 </a>
               </li>
-              <li className="flex items-center gap-2 text-sm text-text-muted">
-                <MapPin className="w-4 h-4" />
-                <span style={{ fontFamily: "var(--font-body)" }}>
-                  Sri Lanka
+              <li>
+                <a
+                  href="tel:+94757922199"
+                  className="flex items-center gap-2 text-sm text-text-muted hover:text-white transition-colors duration-300"
+                  style={{ fontFamily: "var(--font-body)" }}
+                >
+                  <Phone className="w-4 h-4" />
+                  +94 75792 2199
+                </a>
+              </li>
+              <li>
+                <a
+                  href="tel:+94713080010"
+                  className="flex items-center gap-2 text-sm text-text-muted hover:text-white transition-colors duration-300"
+                  style={{ fontFamily: "var(--font-body)" }}
+                >
+                  <Phone className="w-4 h-4" />
+                  +94 71 30 800 10
+                </a>
+              </li>
+              <li className="flex items-start gap-2 text-sm text-text-muted">
+                <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" />
+                <span style={{ fontFamily: "var(--font-body)" }} className="leading-relaxed">
+                  Stack Unleash, <br />
+                  18, Rajawella 02, <br />
+                  Rajawella, Kandy, Sri Lanka.
                 </span>
               </li>
             </ul>
