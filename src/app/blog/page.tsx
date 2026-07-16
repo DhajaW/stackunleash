@@ -22,8 +22,12 @@ import {
 } from "lucide-react";
 
 /* ─────────────────────────────────────────
-   DATA
+   DATA & TYPES
 ───────────────────────────────────────── */
+type GridItem =
+  | { type: "post"; post: typeof posts[0] }
+  | { type: "art"; image: string; title: string; accentColor: string; size: string };
+
 const categories = [
   { label: "All", icon: Layers },
   { label: "Workflow Automation", icon: Zap },
@@ -321,7 +325,7 @@ function FeaturedCard({ post }: { post: typeof posts[0] }) {
           <CategoryBadge label={post.category} color={post.categoryColor} bg={post.categoryBg} />
 
           <h2
-            className="text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-tight text-white group-hover:text-cyan transition-colors duration-300 animate-pulse-slow"
+            className="text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-tight text-white group-hover:text-cyan transition-colors duration-300"
             style={{ fontFamily: "var(--font-heading)", letterSpacing: "-0.02em" }}
           >
             {post.title}
@@ -467,6 +471,75 @@ function BlogCard({
   );
 }
 
+/** PURELY VISUAL ART CARD — fills gaps dynamically with premium developer artwork */
+function ArtCard({
+  image,
+  title,
+  accentColor,
+  darkMode,
+}: {
+  image: string;
+  title: string;
+  accentColor: string;
+  darkMode: boolean;
+}) {
+  const { ref, visible } = useFadeIn();
+  return (
+    <div
+      ref={ref}
+      className={`group relative rounded-2xl overflow-hidden flex flex-col h-full min-h-[320px] transition-all duration-700 ${
+        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+      } ${
+        darkMode
+          ? "glass-card"
+          : "bg-white border border-slate-200 shadow-sm hover:shadow-xl"
+      }`}
+      style={{
+        ...(darkMode ? {} : { background: "#ffffff" }),
+      }}
+    >
+      {/* Hover glow overlay */}
+      <div
+        className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+        style={{
+          boxShadow: `0 0 40px ${accentColor}20, inset 0 0 30px ${accentColor}06`,
+          border: `1px solid ${accentColor}30`,
+        }}
+      />
+
+      {/* Top accent stripe */}
+      <div
+        className="h-[3px] w-full flex-shrink-0"
+        style={{ background: `linear-gradient(90deg, ${accentColor}, transparent)` }}
+      />
+
+      {/* Full-card Image with overlay */}
+      <div className="relative w-full h-full flex-grow overflow-hidden min-h-[220px]">
+        <img
+          src={image}
+          alt={title}
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+        />
+        {/* Glowing gradient wash */}
+        <div className={`absolute inset-0 bg-gradient-to-t ${darkMode ? "from-navy via-navy/40 to-transparent" : "from-black/60 via-black/20 to-transparent"}`} />
+
+        {/* Caption info overlay */}
+        <div className="absolute bottom-6 left-6 right-6">
+          <span
+            className="text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-md mb-2 inline-block"
+            style={{ background: `${accentColor}25`, color: accentColor, border: `1px solid ${accentColor}30` }}
+          >
+            System Visual
+          </span>
+          <h4 className="text-white font-extrabold text-lg leading-tight" style={{ fontFamily: "var(--font-heading)" }}>
+            {title}
+          </h4>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 /* ─────────────────────────────────────────
    MAIN PAGE
 ───────────────────────────────────────── */
@@ -493,7 +566,7 @@ export default function BlogPage() {
   const featuredPost = posts.find((p) => p.featured)!;
   const gridPosts = posts.filter((p) => !p.featured);
 
-  const filtered = gridPosts.filter((p) => {
+  const filteredPosts = gridPosts.filter((p) => {
     const matchCat = activeCategory === "All" || p.category === activeCategory;
     const matchSearch =
       searchQuery === "" ||
@@ -501,6 +574,36 @@ export default function BlogPage() {
       p.tags.some((t) => t.toLowerCase().includes(searchQuery.toLowerCase()));
     return matchCat && matchSearch;
   });
+
+  // Inject Art Cards to fill grid gaps beautifully when viewing all posts without search filter
+  const gridItems: GridItem[] = [];
+  if (activeCategory === "All" && searchQuery === "") {
+    filteredPosts.forEach((post, idx) => {
+      // Inject Art Card 1 right before the 3rd post (occupies Col 3, Row 1)
+      if (idx === 1) {
+        gridItems.push({
+          type: "art",
+          image: "/blog-art-cloud.png",
+          title: "Intelligent Neural Networks & APIs",
+          accentColor: "#8B5CF6",
+          size: "normal",
+        });
+      }
+      gridItems.push({ type: "post", post });
+      // Inject Art Card 2 right after the 4th post (occupies Col 3, Row 3)
+      if (idx === 3) {
+        gridItems.push({
+          type: "art",
+          image: "/blog-mobile.png",
+          title: "Cross-Platform Code Architectures",
+          accentColor: "#06B6D4",
+          size: "normal",
+        });
+      }
+    });
+  } else {
+    filteredPosts.forEach((post) => gridItems.push({ type: "post", post }));
+  }
 
   const bg = darkMode ? "bg-navy min-h-screen text-white" : "bg-slate-50 min-h-screen text-slate-800";
 
@@ -576,7 +679,7 @@ export default function BlogPage() {
               <div className="absolute -left-4 -top-14 text-7xl sm:text-[10rem] font-black opacity-[0.03] select-none pointer-events-none tracking-tighter text-cyan font-mono">
                 BLOG//01
               </div>
-              
+
               <h1
                 className={`relative animate-fade-up animate-delay-100 text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight transition-colors duration-300 ${
                   darkMode ? "text-white" : "text-slate-900"
@@ -709,16 +812,28 @@ export default function BlogPage() {
                   }`}
                   style={{ fontFamily: "var(--font-body)" }}
                 >
-                  {filtered.length} articles
+                  {filteredPosts.length} articles
                 </span>
               </div>
             )}
 
-            {filtered.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 auto-rows-fr gap-5 lg:gap-6">
-                {filtered.map((post, i) => (
-                  <BlogCard key={post.id} post={post} index={i} darkMode={darkMode} />
-                ))}
+            {gridItems.length > 0 ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 grid-flow-row-dense auto-rows-fr gap-5 lg:gap-6">
+                {gridItems.map((item, i) => {
+                  if (item.type === "post") {
+                    return <BlogCard key={item.post.id} post={item.post} index={i} darkMode={darkMode} />;
+                  } else {
+                    return (
+                      <ArtCard
+                        key={`art-${i}`}
+                        image={item.image}
+                        title={item.title}
+                        accentColor={item.accentColor}
+                        darkMode={darkMode}
+                      />
+                    );
+                  }
+                })}
               </div>
             ) : (
               <div className="flex flex-col items-center justify-center py-24 gap-4">
