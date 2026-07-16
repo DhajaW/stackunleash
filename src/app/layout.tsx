@@ -17,9 +17,10 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "StackUnleash | Custom Website Development & Workflow Automation",
+  metadataBase: new URL("https://stackunleash.com"),
+  title: "Custom Website Development | Workflow Automation | Get Your Own App - StackUnleash",
   description:
-    "Cut manual work by 70–80% with custom website development, workflow automation, workflow management software, and custom mobile app development. Get your own app — Sri Lanka → Global.",
+    "Expert personalized website development, workflow automation, workflow management software, and custom mobile app development. Cut manual work by 70-80%.",
   keywords: [
     "Custom Website Development",
     "Personalized Websites",
@@ -37,6 +38,9 @@ export const metadata: Metadata = {
     icon: "/favicon.png",
     apple: "/favicon.png",
   },
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "StackUnleash | Cut Manual Work by 70–80%",
     description:
@@ -46,7 +50,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://stackunleash.com/og-image.png",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
         alt: "StackUnleash – Custom Website Development, Workflow Automation & Mobile Apps",
@@ -58,7 +62,7 @@ export const metadata: Metadata = {
     title: "StackUnleash | Cut Manual Work by 70–80%",
     description:
       "Custom website development, workflow automation & custom mobile app development. Get your own app today.",
-    images: ["https://stackunleash.com/og-image.png"],
+    images: ["/og-image.png"],
   },
   robots: {
     index: true,
@@ -71,6 +75,28 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Schema Markup for the agency
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "StackUnleash",
+    "url": "https://stackunleash.com",
+    "logo": "https://stackunleash.com/logo-full.png",
+    "image": "https://stackunleash.com/og-image.png",
+    "description": "Expert personalized website development, workflow automation, and custom software solutions.",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "LK",
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "sales",
+      "email": "hello@stackunleash.com",
+      "url": "https://stackunleash.com/#discovery",
+    },
+  };
+
   return (
     <html
       lang="en"
@@ -78,6 +104,10 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col bg-navy text-white">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         {children}
       </body>
     </html>
