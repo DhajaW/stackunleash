@@ -75,7 +75,7 @@ const postsData: Record<
         {/* Image 1: Development in progress */}
         <div className="relative rounded-2xl overflow-hidden border border-white/5 my-8">
           <img
-            src="/blog-dev-progress.png"
+            src="/blog-dev-progress.jpg"
             alt="custom website development in progress"
             className="w-full h-auto object-cover max-h-[420px]"
           />
@@ -181,7 +181,7 @@ const postsData: Record<
         {/* Image 2: Browsing personalized site */}
         <div className="relative rounded-2xl overflow-hidden border border-white/5 my-8">
           <img
-            src="/blog-person-browsing.png"
+            src="/blog-person-browsing.jpg"
             alt="a person browsing personalized website"
             className="w-full h-auto object-cover max-h-[420px]"
           />
