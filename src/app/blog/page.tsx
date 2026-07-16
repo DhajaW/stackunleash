@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import {
@@ -40,8 +41,26 @@ const categories = [
 const posts = [
   {
     id: 1,
-    slug: "cut-manual-work-workflow-automation",
+    slug: "custom-website-development-for-higher-conversion-rates",
     featured: true,
+    category: "Web Development",
+    categoryColor: "#FF6B00",
+    categoryBg: "rgba(255,107,0,0.12)",
+    title: "How Custom Website Development Creates Personalized Websites That Convert",
+    excerpt:
+      "If you've ever landed on a website and thought 'this feels like it was made for me,' that's not an accident. That's custom website development at work. Learn how it boosts conversions.",
+    author: { name: "Thusitha Weerasinghe", avatar: "TW" },
+    date: "Jul 16, 2026",
+    readTime: "7 min read",
+    tags: ["Custom website development", "Build custom websites", "web app development service"],
+    accentColor: "#FF6B00",
+    size: "featured",
+    image: "/blog-website.png",
+  },
+  {
+    id: 2,
+    slug: "cut-manual-work-workflow-automation",
+    featured: false,
     category: "Workflow Automation",
     categoryColor: "#06B6D4",
     categoryBg: "rgba(6,182,212,0.12)",
@@ -52,13 +71,12 @@ const posts = [
     date: "Jul 12, 2026",
     readTime: "8 min read",
     tags: ["n8n", "Automation", "Supabase"],
-    gradient: "from-cyan/20 via-navy-light to-navy",
     accentColor: "#06B6D4",
-    size: "featured",
+    size: "normal",
     image: "/blog-automation.png",
   },
   {
-    id: 2,
+    id: 3,
     slug: "custom-website-vs-template",
     featured: false,
     category: "Web Development",
@@ -72,11 +90,11 @@ const posts = [
     readTime: "5 min read",
     tags: ["Next.js", "WordPress", "SEO"],
     accentColor: "#FF6B00",
-    size: "tall",
+    size: "normal",
     image: "/blog-website.png",
   },
   {
-    id: 3,
+    id: 4,
     slug: "get-your-own-app-guide",
     featured: false,
     category: "Mobile Apps",
@@ -94,7 +112,7 @@ const posts = [
     image: "/blog-mobile.png",
   },
   {
-    id: 4,
+    id: 5,
     slug: "n8n-vs-zapier-2026",
     featured: false,
     category: "Workflow Automation",
@@ -112,7 +130,7 @@ const posts = [
     image: "/blog-automation.png",
   },
   {
-    id: 5,
+    id: 6,
     slug: "workflow-management-software-guide",
     featured: false,
     category: "Dev Insights",
@@ -130,7 +148,7 @@ const posts = [
     image: "/blog-website.png",
   },
   {
-    id: 6,
+    id: 7,
     slug: "ecommerce-automation-case-study",
     featured: false,
     category: "Case Studies",
@@ -325,7 +343,7 @@ function FeaturedCard({ post }: { post: typeof posts[0] }) {
           <CategoryBadge label={post.category} color={post.categoryColor} bg={post.categoryBg} />
 
           <h2
-            className="text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-tight text-white group-hover:text-cyan transition-colors duration-300"
+            className="text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-tight text-white group-hover:text-cyan transition-colors duration-300 animate-pulse-slow"
             style={{ fontFamily: "var(--font-heading)", letterSpacing: "-0.02em" }}
           >
             {post.title}
@@ -338,14 +356,14 @@ function FeaturedCard({ post }: { post: typeof posts[0] }) {
           <TagRow tags={post.tags} />
           <PostMeta author={post.author} date={post.date} readTime={post.readTime} darkMode={true} />
 
-          <a
+          <Link
             href={`/blog/${post.slug}`}
             id="blog-featured-cta"
             className="btn-primary w-fit text-sm glow-orange group/btn"
           >
             Read Full Article
             <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
-          </a>
+          </Link>
         </div>
       </div>
     </div>
@@ -369,104 +387,106 @@ function BlogCard({
   return (
     <div
       ref={ref}
-      className={`group relative rounded-2xl overflow-hidden flex flex-col cursor-pointer transition-all duration-500 ${
-        isWide ? "md:col-span-2" : ""
-      } ${isTall ? "row-span-2" : ""} ${
-        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-      } ${
-        darkMode
-          ? "glass-card"
-          : "bg-white border border-slate-200 shadow-sm hover:shadow-xl"
-      }`}
-      style={{
-        transitionDelay: `${index * 80}ms`,
-        ...(darkMode ? {} : { background: "#ffffff" }),
-      }}
+      className={`${isWide ? "md:col-span-2" : ""} ${isTall ? "row-span-2" : ""} w-full h-full`}
     >
-      {/* Hover glow overlay */}
-      <div
-        className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+      <Link
+        href={`/blog/${post.slug}`}
+        className={`group relative rounded-2xl overflow-hidden flex flex-col cursor-pointer transition-all duration-500 w-full h-full ${
+          visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+        } ${
+          darkMode
+            ? "glass-card"
+            : "bg-white border border-slate-200 shadow-sm hover:shadow-xl"
+        }`}
         style={{
-          boxShadow: `0 0 40px ${post.accentColor}20, inset 0 0 30px ${post.accentColor}06`,
-          border: `1px solid ${post.accentColor}30`,
+          transitionDelay: `${index * 80}ms`,
+          ...(darkMode ? {} : { background: "#ffffff" }),
         }}
-      />
-
-      {/* Top accent stripe */}
-      <div
-        className="h-[3px] w-full flex-shrink-0"
-        style={{ background: `linear-gradient(90deg, ${post.accentColor}, transparent)` }}
-      />
-
-      {/* Card Image Header */}
-      <div className={`relative overflow-hidden flex-shrink-0 ${isTall ? "h-64" : "h-48"}`}>
-        <img
-          src={post.image}
-          alt={post.title}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+      >
+        {/* Hover glow overlay */}
+        <div
+          className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+          style={{
+            boxShadow: `0 0 40px ${post.accentColor}20, inset 0 0 30px ${post.accentColor}06`,
+            border: `1px solid ${post.accentColor}30`,
+          }}
         />
-        <div className={`absolute inset-0 ${darkMode ? "bg-gradient-to-t from-navy/70 via-navy/10 to-transparent" : "bg-gradient-to-t from-black/20 to-transparent"}`} />
-      </div>
 
-      {/* Content */}
-      <div className="p-6 flex flex-col gap-4 flex-1">
-        <div className="flex items-start justify-between gap-3">
-          <CategoryBadge label={post.category} color={post.categoryColor} bg={post.categoryBg} small />
-          <div
-            className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 opacity-60 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110"
-            style={{ background: `${post.accentColor}15`, color: post.accentColor }}
+        {/* Top accent stripe */}
+        <div
+          className="h-[3px] w-full flex-shrink-0"
+          style={{ background: `linear-gradient(90deg, ${post.accentColor}, transparent)` }}
+        />
+
+        {/* Card Image Header */}
+        <div className={`relative overflow-hidden flex-shrink-0 ${isTall ? "h-64" : "h-48"}`}>
+          <img
+            src={post.image}
+            alt={post.title}
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+          <div className={`absolute inset-0 ${darkMode ? "bg-gradient-to-t from-navy/70 via-navy/10 to-transparent" : "bg-gradient-to-t from-black/20 to-transparent"}`} />
+        </div>
+
+        {/* Content */}
+        <div className="p-6 flex flex-col gap-4 flex-1">
+          <div className="flex items-start justify-between gap-3">
+            <CategoryBadge label={post.category} color={post.categoryColor} bg={post.categoryBg} small />
+            <div
+              className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 opacity-60 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110"
+              style={{ background: `${post.accentColor}15`, color: post.accentColor }}
+            >
+              <BookOpen className="w-4 h-4" />
+            </div>
+          </div>
+
+          <h3
+            className={`font-extrabold leading-snug transition-colors duration-300 group-hover:opacity-90 ${
+              isWide ? "text-xl sm:text-2xl" : "text-lg"
+            } ${darkMode ? "text-white" : "text-slate-900"}`}
+            style={{ fontFamily: "var(--font-heading)", letterSpacing: "-0.01em" }}
           >
-            <BookOpen className="w-4 h-4" />
+            {post.title}
+          </h3>
+
+          <p
+            className={`text-sm leading-relaxed line-clamp-3 ${
+              darkMode ? "text-text-muted" : "text-slate-500"
+            }`}
+            style={{ fontFamily: "var(--font-body)" }}
+          >
+            {post.excerpt}
+          </p>
+
+          <div className="mt-auto flex flex-col gap-3">
+            <TagRow tags={post.tags} light={darkMode} />
+            <PostMeta author={post.author} date={post.date} readTime={post.readTime} darkMode={darkMode} />
           </div>
         </div>
 
-        <h3
-          className={`font-extrabold leading-snug transition-colors duration-300 group-hover:opacity-90 ${
-            isWide ? "text-xl sm:text-2xl" : "text-lg"
-          } ${darkMode ? "text-white" : "text-slate-900"}`}
-          style={{ fontFamily: "var(--font-heading)", letterSpacing: "-0.01em" }}
-        >
-          {post.title}
-        </h3>
-
-        <p
-          className={`text-sm leading-relaxed line-clamp-3 ${
-            darkMode ? "text-text-muted" : "text-slate-500"
+        {/* Read more footer */}
+        <div
+          className={`px-6 py-4 border-t flex items-center justify-between ${
+            darkMode ? "border-white/[0.06]" : "border-slate-100"
           }`}
-          style={{ fontFamily: "var(--font-body)" }}
         >
-          {post.excerpt}
-        </p>
-
-        <div className="mt-auto flex flex-col gap-3">
-          <TagRow tags={post.tags} light={darkMode} />
-          <PostMeta author={post.author} date={post.date} readTime={post.readTime} darkMode={darkMode} />
+          <span
+            className="text-xs font-semibold flex items-center gap-1.5 transition-all duration-300 group-hover:gap-2.5"
+            style={{ color: post.accentColor, fontFamily: "var(--font-heading)" }}
+          >
+            Read More <ChevronRight className="w-3.5 h-3.5" />
+          </span>
+          <span
+            className={`text-[10px] flex items-center gap-1 ${
+              darkMode ? "text-text-muted" : "text-slate-400"
+            }`}
+            style={{ fontFamily: "var(--font-body)" }}
+          >
+            <Clock className="w-3 h-3" />
+            {post.readTime}
+          </span>
         </div>
-      </div>
-
-      {/* Read more footer */}
-      <div
-        className={`px-6 py-4 border-t flex items-center justify-between ${
-          darkMode ? "border-white/[0.06]" : "border-slate-100"
-        }`}
-      >
-        <a
-          href={`/blog/${post.slug}`}
-          className="text-xs font-semibold flex items-center gap-1.5 transition-all duration-300 group-hover:gap-2.5"
-          style={{ color: post.accentColor, fontFamily: "var(--font-heading)" }}
-        >
-          Read More <ChevronRight className="w-3.5 h-3.5" />
-        </a>
-        <span
-          className={`text-[10px] flex items-center gap-1 ${
-            darkMode ? "text-text-muted" : "text-slate-400"
-          }`}
-          style={{ fontFamily: "var(--font-body)" }}
-        >
-          <Clock className="w-3 h-3" />
-          {post.readTime}
-        </span>
-      </div>
+      </Link>
     </div>
   );
 }
