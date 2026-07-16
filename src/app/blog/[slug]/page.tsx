@@ -48,7 +48,7 @@ const postsData: Record<
     date: "Jul 16, 2026",
     readTime: "7 min read",
     tags: ["Custom website development", "Build custom websites", "web app development service", "custom website developer"],
-    author: { name: "Thusitha Weerasinghe", avatar: "TW", role: "Founder & Lead Engineer" },
+    author: { name: "Asanka Udawatte", avatar: "AU", role: "Digital Growth Director" },
     image: "/blog-website.png",
     metaTitle: "Custom Website Development for Higher Conversion Rates",
     metaDescription: "Discover how custom website development tailors unique online experiences that boost engagement and drive conversions for your business.",

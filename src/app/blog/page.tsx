@@ -49,7 +49,7 @@ const posts = [
     title: "How Custom Website Development Creates Personalized Websites That Convert",
     excerpt:
       "If you've ever landed on a website and thought 'this feels like it was made for me,' that's not an accident. That's custom website development at work. Learn how it boosts conversions.",
-    author: { name: "Thusitha Weerasinghe", avatar: "TW" },
+    author: { name: "Asanka Udawatte", avatar: "AU" },
     date: "Jul 16, 2026",
     readTime: "7 min read",
     tags: ["Custom website development", "Build custom websites", "web app development service"],
