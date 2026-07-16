@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
@@ -14,6 +15,7 @@ const navLinks = [
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -31,6 +33,12 @@ export default function Header() {
       document.body.style.overflow = "";
     };
   }, [mobileOpen]);
+
+  const isActive = (href: string) => {
+    if (href === pathname) return true;
+    if (href.startsWith("/#") && pathname === "/") return true;
+    return false;
+  };
 
   return (
     <>
@@ -72,17 +80,24 @@ export default function Header() {
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-10">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                id={`nav-${link.label.toLowerCase().replace(/\s/g, "-")}`}
-                className="text-base font-semibold text-text-secondary hover:text-white transition-colors duration-300 relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-orange after:transition-all after:duration-300 hover:after:w-full"
-                style={{ fontFamily: "var(--font-body)" }}
-              >
-                {link.label}
-              </a>
-            ))}
+            {navLinks.map((link) => {
+              const active = isActive(link.href);
+              return (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  id={`nav-${link.label.toLowerCase().replace(/\s/g, "-")}`}
+                  className={`text-base font-semibold transition-colors duration-300 relative after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:bg-orange after:transition-all after:duration-300 ${
+                    active
+                      ? "text-white after:w-full"
+                      : "text-text-secondary hover:text-white after:w-0 hover:after:w-full"
+                  }`}
+                  style={{ fontFamily: "var(--font-body)" }}
+                >
+                  {link.label}
+                </a>
+              );
+            })}
           </div>
 
           {/* CTA */}
