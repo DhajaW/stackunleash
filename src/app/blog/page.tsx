@@ -144,7 +144,7 @@ const posts = [
     readTime: "9 min read",
     tags: ["n8n", "AI Studio", "E-Commerce"],
     accentColor: "#F59E0B",
-    size: "tall",
+    size: "normal",
     image: "/blog-automation.png",
   },
 ];
