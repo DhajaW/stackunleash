@@ -51,6 +51,7 @@ const posts = [
     gradient: "from-cyan/20 via-navy-light to-navy",
     accentColor: "#06B6D4",
     size: "featured",
+    image: "/blog-automation.png",
   },
   {
     id: 2,
@@ -68,6 +69,7 @@ const posts = [
     tags: ["Next.js", "WordPress", "SEO"],
     accentColor: "#FF6B00",
     size: "tall",
+    image: "/blog-website.png",
   },
   {
     id: 3,
@@ -85,6 +87,7 @@ const posts = [
     tags: ["React", "Capacitor", "iOS", "Android"],
     accentColor: "#8B5CF6",
     size: "normal",
+    image: "/blog-mobile.png",
   },
   {
     id: 4,
@@ -102,6 +105,7 @@ const posts = [
     tags: ["n8n", "Zapier", "Automation"],
     accentColor: "#06B6D4",
     size: "wide",
+    image: "/blog-automation.png",
   },
   {
     id: 5,
@@ -119,6 +123,7 @@ const posts = [
     tags: ["Automation", "Business", "Productivity"],
     accentColor: "#10B981",
     size: "normal",
+    image: "/blog-website.png",
   },
   {
     id: 6,
@@ -136,6 +141,7 @@ const posts = [
     tags: ["n8n", "AI Studio", "E-Commerce"],
     accentColor: "#F59E0B",
     size: "tall",
+    image: "/blog-automation.png",
   },
 ];
 
@@ -284,45 +290,16 @@ function FeaturedCard({ post }: { post: typeof posts[0] }) {
         }}
       />
 
-      <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-0">
-        {/* Left — visual panel */}
-        <div className="relative h-56 lg:h-auto min-h-[280px] overflow-hidden">
-          {/* Abstract tech visual */}
-          <div
-            className="absolute inset-0"
-            style={{
-              background: "linear-gradient(135deg, rgba(6,182,212,0.15) 0%, rgba(99,102,241,0.1) 50%, rgba(15,23,42,0.8) 100%)",
-            }}
+      <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-0">
+        {/* Left — high-end artistic visual panel */}
+        <div className="relative h-64 lg:h-auto min-h-[360px] overflow-hidden lg:col-span-6">
+          <img
+            src={post.image}
+            alt={post.title}
+            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
           />
-          {/* Circuit pattern SVG */}
-          <svg className="absolute inset-0 w-full h-full opacity-20" viewBox="0 0 400 300" fill="none">
-            <path d="M50 150 H150 V80 H300 V150 H350" stroke="#06B6D4" strokeWidth="1.5" strokeDasharray="4 4"/>
-            <path d="M100 200 H200 V120 H280 V200 H380" stroke="#6366F1" strokeWidth="1" strokeDasharray="3 6"/>
-            <path d="M20 100 H80 V240 H180 V160 H260 V240 H360" stroke="#FF6B00" strokeWidth="0.8" strokeDasharray="2 8" opacity="0.5"/>
-            <circle cx="150" cy="80" r="5" fill="#06B6D4" opacity="0.8"/>
-            <circle cx="300" cy="80" r="5" fill="#06B6D4" opacity="0.8"/>
-            <circle cx="150" cy="150" r="4" fill="#6366F1" opacity="0.6"/>
-            <circle cx="350" cy="150" r="4" fill="#6366F1" opacity="0.6"/>
-            <circle cx="200" cy="120" r="3" fill="#FF6B00" opacity="0.6"/>
-            <circle cx="280" cy="120" r="3" fill="#FF6B00" opacity="0.6"/>
-            <rect x="60" y="60" width="30" height="20" rx="3" fill="none" stroke="#06B6D4" strokeWidth="1" opacity="0.4"/>
-            <rect x="300" y="170" width="40" height="25" rx="3" fill="none" stroke="#6366F1" strokeWidth="1" opacity="0.4"/>
-            <rect x="160" y="210" width="50" height="18" rx="3" fill="none" stroke="#FF6B00" strokeWidth="0.8" opacity="0.3"/>
-          </svg>
-
-          {/* Centre emblem */}
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div
-              className="w-24 h-24 rounded-2xl flex items-center justify-center"
-              style={{
-                background: "rgba(6,182,212,0.1)",
-                border: "1px solid rgba(6,182,212,0.3)",
-                boxShadow: "0 0 40px rgba(6,182,212,0.15)",
-              }}
-            >
-              <Zap className="w-10 h-10 text-cyan" />
-            </div>
-          </div>
+          {/* Subtle gradient overlay to mesh with text */}
+          <div className="absolute inset-0 bg-gradient-to-r from-navy/30 via-navy/10 to-navy-light/90" />
 
           {/* Featured badge */}
           <div className="absolute top-5 left-5">
@@ -334,17 +311,17 @@ function FeaturedCard({ post }: { post: typeof posts[0] }) {
                 fontFamily: "var(--font-heading)",
               }}
             >
-              ★ Featured
+              ★ Featured Post
             </span>
           </div>
         </div>
 
         {/* Right — content panel */}
-        <div className="p-8 sm:p-10 flex flex-col justify-center gap-5 bg-navy-light/40">
+        <div className="p-8 sm:p-10 flex flex-col justify-center gap-5 bg-navy-light/40 lg:col-span-6">
           <CategoryBadge label={post.category} color={post.categoryColor} bg={post.categoryBg} />
 
           <h2
-            className="text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-tight text-white group-hover:text-cyan transition-colors duration-300"
+            className="text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-tight text-white group-hover:text-cyan transition-colors duration-300 animate-pulse-slow"
             style={{ fontFamily: "var(--font-heading)", letterSpacing: "-0.02em" }}
           >
             {post.title}
@@ -416,6 +393,16 @@ function BlogCard({
         className="h-[3px] w-full flex-shrink-0"
         style={{ background: `linear-gradient(90deg, ${post.accentColor}, transparent)` }}
       />
+
+      {/* Card Image Header */}
+      <div className={`relative overflow-hidden flex-shrink-0 ${isTall ? "h-64" : "h-48"}`}>
+        <img
+          src={post.image}
+          alt={post.title}
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+        <div className={`absolute inset-0 ${darkMode ? "bg-gradient-to-t from-navy/70 via-navy/10 to-transparent" : "bg-gradient-to-t from-black/20 to-transparent"}`} />
+      </div>
 
       {/* Content */}
       <div className="p-6 flex flex-col gap-4 flex-1">
@@ -583,18 +570,26 @@ export default function BlogPage() {
             {/* Section label */}
             <p className="section-label animate-fade-up">The StackUnleash Journal</p>
 
-            {/* Main heading */}
-            <h1
-              className={`animate-fade-up animate-delay-100 text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight mb-6 transition-colors duration-300 ${
-                darkMode ? "text-white" : "text-slate-900"
-              }`}
-              style={{ fontFamily: "var(--font-heading)", letterSpacing: "-0.03em" }}
-            >
-              Insights on{" "}
-              <span className="gradient-text">Automation,</span>
-              <br className="hidden sm:block" />
-              Dev & Digital Growth
-            </h1>
+            {/* Artistic Main Heading with Watermark */}
+            <div className="relative mb-6">
+              {/* Massive futuristic background watermark */}
+              <div className="absolute -left-4 -top-14 text-7xl sm:text-[10rem] font-black opacity-[0.03] select-none pointer-events-none tracking-tighter text-cyan font-mono">
+                BLOG//01
+              </div>
+              
+              <h1
+                className={`relative animate-fade-up animate-delay-100 text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight transition-colors duration-300 ${
+                  darkMode ? "text-white" : "text-slate-900"
+                }`}
+                style={{ fontFamily: "var(--font-heading)", letterSpacing: "-0.03em" }}
+              >
+                The StackUnleash{" "}
+                <span className="relative inline-block">
+                  <span className="gradient-text">Blog</span>
+                  <span className="absolute -bottom-1.5 left-0 w-full h-[4px] bg-gradient-to-r from-cyan via-orange to-violet-500 rounded-full animate-pulse"></span>
+                </span>
+              </h1>
+            </div>
 
             <p
               className={`animate-fade-up animate-delay-200 max-w-2xl text-base sm:text-lg leading-relaxed mb-10 transition-colors duration-300 ${
