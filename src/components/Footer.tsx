@@ -10,7 +10,7 @@ const footerLinks = {
     { label: "Consulting", href: "/#discovery" },
   ],
   company: [
-    { label: "Our Stack", href: "/#stack" },
+    { label: "Blog", href: "/blog" },
     { label: "Case Studies", href: "/#case-studies" },
     { label: "Book a Call", href: "/#discovery" },
   ],
