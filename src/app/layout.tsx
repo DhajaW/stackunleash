@@ -17,33 +17,48 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "StackUnleash | Premium IT & Software Solutions Agency",
+  title: "StackUnleash | Custom Website Development & Workflow Automation",
   description:
-    "We build automated business systems powered by AI-driven workflows, smart portals, and seamless web-to-mobile solutions. Enterprise-grade solutions from $1,000 to $5,000+.",
+    "Cut manual work by 70–80% with custom website development, workflow automation, workflow management software, and custom mobile app development. Get your own app — Sri Lanka → Global.",
   keywords: [
-    "IT Solutions",
-    "Software Agency",
-    "AI Automation",
+    "Custom Website Development",
+    "Personalized Websites",
+    "Workflow Automation",
+    "Workflow Management Software",
+    "Custom Mobile App Development",
+    "Get Your Own App",
     "n8n Workflows",
     "Enterprise Portals",
     "Web Development",
     "Mobile Apps",
-    "Supabase",
-    "Capacitor",
+    "Software Agency Sri Lanka",
   ],
+  icons: {
+    icon: "/favicon.png",
+    apple: "/favicon.png",
+  },
   openGraph: {
-    title: "StackUnleash | Automated Business Systems",
+    title: "StackUnleash | Cut Manual Work by 70–80%",
     description:
-      "Empowering businesses with AI-driven workflows, smart portals, and seamless web-to-mobile solutions.",
+      "Custom website development, workflow automation & custom mobile app development. Tailored solutions that eliminate repetitive tasks and drive growth.",
     url: "https://stackunleash.com",
     siteName: "StackUnleash",
     type: "website",
+    images: [
+      {
+        url: "https://stackunleash.com/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "StackUnleash – Custom Website Development, Workflow Automation & Mobile Apps",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "StackUnleash | Automated Business Systems",
+    title: "StackUnleash | Cut Manual Work by 70–80%",
     description:
-      "Empowering businesses with AI-driven workflows, smart portals, and seamless web-to-mobile solutions.",
+      "Custom website development, workflow automation & custom mobile app development. Get your own app today.",
+    images: ["https://stackunleash.com/og-image.png"],
   },
   robots: {
     index: true,

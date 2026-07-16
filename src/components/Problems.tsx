@@ -46,12 +46,12 @@ const solutions = [
   {
     icon: LayoutDashboard,
     label: "Centralized Portals",
-    desc: "One source of truth for all your operations",
+    desc: "One source of truth for all operations",
   },
   {
     icon: Bot,
-    label: "Intelligent Automation",
-    desc: "Powered by n8n workflow orchestration",
+    label: "Intelligent Workflow Automation",
+    desc: "Powered by n8n and AI",
   },
   {
     icon: Bell,
@@ -86,6 +86,12 @@ export default function Problems() {
             <br />
             <span className="text-text-secondary">Your Growth?</span>
           </h2>
+          <p
+            className="max-w-2xl mx-auto text-text-muted text-base italic mt-4"
+            style={{ fontFamily: "var(--font-body)" }}
+          >
+            &ldquo;Without proper workflow automation and workflow management software, businesses waste time on repetitive tasks instead of focusing on growth.&rdquo;
+          </p>
         </div>
 
         {/* Problem cards */}
@@ -150,15 +156,16 @@ export default function Problems() {
                   className="text-2xl sm:text-3xl font-extrabold mb-3"
                   style={{ fontFamily: "var(--font-heading)" }}
                 >
-                  We turn operational chaos into{" "}
-                  <span className="gradient-text">automated precision</span>.
+                  We Turn Chaos into{" "}
+                  <span className="gradient-text">Automated Precision</span> with Workflow Automation
                 </h3>
                 <p
                   className="text-text-secondary text-base leading-relaxed max-w-xl"
                   style={{ fontFamily: "var(--font-body)" }}
                 >
-                  From scattered spreadsheets to centralized intelligence. We
-                  architect systems that work while you sleep.
+                  From scattered spreadsheets to intelligent, centralized systems. We build workflow
+                  management software, personalized websites, and automated solutions that work
+                  while you sleep.
                 </p>
               </div>
 

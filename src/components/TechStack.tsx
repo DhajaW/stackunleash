@@ -203,9 +203,45 @@ const techStack: TechItem[] = [
     bgColor: "rgba(0, 216, 255, 0.12)",
     logo: "Re",
   },
+  // SEO
+  {
+    name: "Yoast SEO",
+    category: "SEO",
+    color: "#A4286A",
+    bgColor: "rgba(164, 40, 106, 0.12)",
+    logo: "Yo",
+  },
+  {
+    name: "Semrush",
+    category: "SEO",
+    color: "#FF642D",
+    bgColor: "rgba(255, 100, 45, 0.12)",
+    logo: "Sm",
+  },
+  {
+    name: "Ahrefs",
+    category: "SEO",
+    color: "#F99E1D",
+    bgColor: "rgba(249, 158, 29, 0.12)",
+    logo: "Ah",
+  },
+  {
+    name: "Google Search Console",
+    category: "SEO",
+    color: "#4285F4",
+    bgColor: "rgba(66, 133, 244, 0.12)",
+    logo: "Gsc",
+  },
+  {
+    name: "Surfer SEO",
+    category: "SEO",
+    color: "#00C4B4",
+    bgColor: "rgba(0, 196, 180, 0.12)",
+    logo: "Sf",
+  },
 ];
 
-const categories = ["Frontend", "Backend", "AI & Automation", "Mobile"];
+const categories = ["Frontend", "Backend", "AI & Automation", "Mobile", "SEO"];
 
 export default function TechStack() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -233,10 +269,17 @@ export default function TechStack() {
             className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4"
             style={{ fontFamily: "var(--font-heading)" }}
           >
-            Powered by Industry-Leading
+            Powered by Industry-Leading Tools
             <br />
-            <span className="text-text-secondary">Architecture</span>
+            <span className="text-text-secondary">for Custom Development</span>
           </h2>
+          <p
+            className="max-w-2xl mx-auto text-text-muted text-base"
+            style={{ fontFamily: "var(--font-body)" }}
+          >
+            We use modern, reliable technologies to deliver fast, scalable custom website
+            development and custom mobile app development solutions.
+          </p>
         </div>
 
         {/* Tech grid by category */}

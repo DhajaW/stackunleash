@@ -24,23 +24,23 @@ const caseStudies = [
   },
   {
     icon: Globe,
-    title: "Eco-Tourism Booking Portal",
-    category: "Enterprise Portal",
+    title: "Custom Website Development",
+    category: "Personalized Website",
     result: "Increased direct bookings by 55%",
     resultIcon: TrendingUp,
     description:
-      "Built a complete booking and operations platform with real-time availability, automated confirmations, and integrated payment processing.",
-    tags: ["WordPress", "Firebase", "Capacitor"],
+      "Built a personalized website and booking portal that increased direct bookings by 55%. Delivered a high-conversion, brand-tailored web experience with automated confirmations and integrated payment processing.",
+    tags: ["WordPress", "Firebase", "Next.js"],
     color: "cyan",
   },
   {
     icon: GraduationCap,
-    title: "Web-to-Mobile EdTech Platform",
-    category: "Hybrid Application",
+    title: "Custom Mobile App Development",
+    category: "Get Your Own App",
     result: "Deployed to Android & iOS from unified backend",
     resultIcon: TrendingUp,
     description:
-      "Developed a comprehensive learning management system with offline capabilities, push notifications, and real-time content synchronization.",
+      "Developed a comprehensive learning management system with offline capabilities, push notifications, and real-time content synchronization. Get your own app deployed to Android & iOS.",
     tags: ["React", "Capacitor", "Supabase"],
     color: "violet",
   },
@@ -70,10 +70,10 @@ export default function CaseStudies() {
             className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4"
             style={{ fontFamily: "var(--font-heading)" }}
           >
-            Proven Results for
+            Proven Results for Businesses
             <br />
             <span className="text-text-secondary">
-              Forward-Thinking Businesses
+              Using Workflow Automation
             </span>
           </h2>
         </div>

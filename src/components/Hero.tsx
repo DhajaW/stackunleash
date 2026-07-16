@@ -509,7 +509,7 @@ export default function Hero() {
             className="text-xs font-medium text-text-secondary tracking-wide"
             style={{ fontFamily: "var(--font-body)" }}
           >
-            Enterprise-Grade Solutions • Sri Lanka → Global
+            Personalized Website • Custom Mobile App Development • Sri Lanka → Global
           </span>
         </div>
 
@@ -518,10 +518,10 @@ export default function Hero() {
           className="animate-fade-up animate-delay-100 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.08] tracking-tight mb-6"
           style={{ fontFamily: "var(--font-heading)" }}
         >
-          Cut Manual Work
+          Cut Manual Work by
           <br />
           <span className="mt-2 block">
-            By <span className="gradient-text">70-80%</span>.
+            <span className="gradient-text">70-80%</span>
           </span>
         </h1>
 
@@ -530,8 +530,7 @@ export default function Hero() {
           className="animate-fade-up animate-delay-200 max-w-2xl mx-auto text-base sm:text-lg md:text-xl text-text-secondary leading-relaxed mb-10"
           style={{ fontFamily: "var(--font-body)" }}
         >
-          We build custom AI workflows, enterprise portals, commercial/professional websites, and mobile apps
-          custom-tailored for your business.
+          Get Your Own App and Automated Systems That Scale. We deliver custom website development, personalized websites, workflow automation, workflow management software, and custom mobile app development. Tailored solutions that eliminate repetitive tasks and drive growth.
         </p>
 
         {/* Buttons */}
@@ -583,6 +582,12 @@ export default function Hero() {
                   </div>
                 ))}
               </div>
+              <p
+                className="text-xs text-text-muted text-center mt-4 leading-relaxed"
+                style={{ fontFamily: "var(--font-body)" }}
+              >
+                Specializing in workflow automation, custom website development, and get your own app solutions.
+              </p>
             </div>
           </div>
           {/* Glow behind mockup */}

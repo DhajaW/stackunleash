@@ -63,6 +63,13 @@ export default function Discovery() {
             <br />
             <span className="gradient-text">Automated Future</span>?
           </h2>
+          <p
+            className="max-w-2xl mx-auto text-text-muted text-base mt-4"
+            style={{ fontFamily: "var(--font-body)" }}
+          >
+            Discuss your needs for custom website development, workflow automation,
+            custom mobile app development, or get your own app.
+          </p>
         </div>
 
         {/* Two column layout */}
