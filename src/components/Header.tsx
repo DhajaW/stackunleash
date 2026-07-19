@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Sun, Moon } from "lucide-react";
+import { useTheme } from "./ThemeProvider";
 
 const navLinks = [
   { label: "Services", href: "/#services" },
@@ -15,7 +16,13 @@ const navLinks = [
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
+  const { theme, toggleTheme } = useTheme();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -46,7 +53,7 @@ export default function Header() {
         id="site-header"
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? "py-2 bg-navy/90 backdrop-blur-xl border-b border-white/[0.08] shadow-xl shadow-black/30"
+            ? "py-2 bg-navy/90 backdrop-blur-xl border-b border-border shadow-xl shadow-black/30"
             : "py-4 bg-navy/40 backdrop-blur-md border-b border-transparent"
         }`}
       >
@@ -66,7 +73,7 @@ export default function Header() {
                 className="text-2xl font-black tracking-tight leading-none"
                 style={{ fontFamily: "var(--font-heading)" }}
               >
-                <span className="text-white">STACK</span>
+                <span className="text-text-primary">STACK</span>
                 <span className="gradient-text">UNLEASH</span>
               </span>
               <span
@@ -89,8 +96,8 @@ export default function Header() {
                   id={`nav-${link.label.toLowerCase().replace(/\s/g, "-")}`}
                   className={`text-base font-semibold transition-colors duration-300 relative after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:bg-orange after:transition-all after:duration-300 ${
                     active
-                      ? "text-white after:w-full"
-                      : "text-text-secondary hover:text-white after:w-0 hover:after:w-full"
+                      ? "text-text-primary after:w-full"
+                      : "text-text-secondary hover:text-text-primary after:w-0 hover:after:w-full"
                   }`}
                   style={{ fontFamily: "var(--font-body)" }}
                 >
@@ -100,8 +107,19 @@ export default function Header() {
             })}
           </div>
 
-          {/* CTA */}
-          <div className="hidden md:block">
+          {/* CTA & Theme Toggle */}
+          <div className="hidden md:flex items-center gap-4">
+            <button
+              onClick={toggleTheme}
+              className="p-2.5 rounded-xl border border-border bg-navy-light/40 hover:bg-navy-light/80 hover:border-cyan/30 text-text-secondary hover:text-cyan transition-all duration-300 flex items-center justify-center cursor-pointer"
+              aria-label="Toggle theme"
+            >
+              {mounted && theme === "light" ? (
+                <Moon className="w-5 h-5" />
+              ) : (
+                <Sun className="w-5 h-5 text-orange" />
+              )}
+            </button>
             <a
               href="/contact"
               id="header-cta"
@@ -114,7 +132,7 @@ export default function Header() {
           {/* Mobile Toggle */}
           <button
             id="mobile-menu-toggle"
-            className="md:hidden text-white p-2 rounded-lg hover:bg-white/5 transition-colors"
+            className="md:hidden text-text-primary p-2 rounded-lg hover:bg-white/5 transition-colors"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle menu"
             aria-expanded={mobileOpen}
@@ -139,13 +157,32 @@ export default function Header() {
               key={link.href}
               href={link.href}
               id={`mobile-nav-${link.label.toLowerCase().replace(/\s/g, "-")}`}
-              className="text-xl font-semibold text-text-secondary hover:text-white transition-colors"
+              className="text-xl font-semibold text-text-secondary hover:text-text-primary transition-colors"
               style={{ fontFamily: "var(--font-heading)" }}
               onClick={() => setMobileOpen(false)}
             >
               {link.label}
             </a>
           ))}
+          
+          {/* Mobile Theme Toggle */}
+          <button
+            onClick={toggleTheme}
+            className="flex items-center gap-2.5 px-5 py-2.5 rounded-xl border border-border bg-navy-light/40 text-text-secondary hover:text-cyan transition-all duration-300 text-sm font-semibold cursor-pointer"
+          >
+            {mounted && theme === "light" ? (
+              <>
+                <Moon className="w-4 h-4 text-cyan" />
+                <span>Dark Mode</span>
+              </>
+            ) : (
+              <>
+                <Sun className="w-4 h-4 text-orange" />
+                <span>Light Mode</span>
+              </>
+            )}
+          </button>
+
           <a
             href="/contact"
             id="mobile-cta"

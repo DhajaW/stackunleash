@@ -3,24 +3,55 @@
 @source "../components";
 @source "../app";
 
+/* ─── CSS Theme Variables ─── */
+:root {
+  --background: #0F172A;
+  --foreground: #FFFFFF;
+  --navy: #0F172A;
+  --navy-light: #1E293B;
+  --navy-lighter: #334155;
+  --text-primary: #FFFFFF;
+  --text-secondary: #CBD5E1;
+  --text-muted: #94A3B8;
+  --border: rgba(255, 255, 255, 0.08);
+  --border-light: rgba(255, 255, 255, 0.12);
+  --glass: rgba(15, 23, 42, 0.7);
+  --glass-light: rgba(30, 41, 59, 0.4);
+}
+
+html.light {
+  --background: #F8FAFC;
+  --foreground: #0F172A;
+  --navy: #F8FAFC;
+  --navy-light: #FFFFFF;
+  --navy-lighter: #E2E8F0;
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+  --text-muted: #64748B;
+  --border: rgba(15, 23, 42, 0.08);
+  --border-light: rgba(15, 23, 42, 0.12);
+  --glass: rgba(255, 255, 255, 0.75);
+  --glass-light: rgba(255, 255, 255, 0.75);
+}
+
 /* ─── Tailwind v4 Theme ─── */
 @theme inline {
-  --color-background: #0F172A;
-  --color-foreground: #FFFFFF;
-  --color-navy: #0F172A;
-  --color-navy-light: #1E293B;
-  --color-navy-lighter: #334155;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-navy: var(--navy);
+  --color-navy-light: var(--navy-light);
+  --color-navy-lighter: var(--navy-lighter);
   --color-orange: #FF6B00;
   --color-orange-dark: #E55F00;
   --color-cyan: #06B6D4;
   --color-cyan-dark: #0891B2;
-  --color-text-primary: #FFFFFF;
-  --color-text-secondary: #CBD5E1;
-  --color-text-muted: #94A3B8;
-  --color-border: rgba(255, 255, 255, 0.08);
-  --color-border-light: rgba(255, 255, 255, 0.12);
-  --color-glass: rgba(15, 23, 42, 0.7);
-  --color-glass-light: rgba(30, 41, 59, 0.5);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-border: var(--border);
+  --color-border-light: var(--border-light);
+  --color-glass: var(--glass);
+  --color-glass-light: var(--glass-light);
   --font-heading: 'Plus Jakarta Sans', sans-serif;
   --font-body: 'Inter', sans-serif;
 }
@@ -39,6 +70,7 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -46,6 +78,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: -0.02em;
+  color: var(--color-text-primary);
 }
 
 /* ─── Animated Gradient Text ─── */
@@ -73,27 +106,71 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ─── Glassmorphism ─── */
 .glass {
-  background: rgba(15, 23, 42, 0.75);
+  background: var(--color-glass);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--color-border);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .glass-card {
-  background: rgba(30, 41, 59, 0.4);
+  background: var(--color-glass-light);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--color-border);
   transition: all 0.3s ease;
 }
 
 .glass-card:hover {
-  background: rgba(30, 41, 59, 0.6);
-  border-color: rgba(255, 255, 255, 0.12);
+  background: var(--color-glass-light);
+  border-color: var(--color-border-light);
   transform: translateY(-4px);
   box-shadow:
-    0 20px 40px -12px rgba(0, 0, 0, 0.4),
-    0 0 0 1px rgba(255, 255, 255, 0.05);
+    0 20px 40px -12px rgba(0, 0, 0, 0.25),
+    0 0 0 1px var(--color-border);
+}
+
+html.light {
+  /* Override text-white to dynamically resolve to text-primary, keeping it readable */
+  & .text-white:not(.keep-white) {
+    color: var(--color-text-primary);
+  }
+  & .hover\:text-white:hover:not(.keep-white) {
+    color: var(--color-text-primary);
+  }
+
+  /* Make sure gradient glows and cards look clean in light mode */
+  & .glass-card {
+    box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.08);
+  }
+  & .glass-card:hover {
+    background: #ffffff;
+    border-color: rgba(15, 23, 42, 0.15);
+    box-shadow: 
+      0 20px 40px -12px rgba(15, 23, 42, 0.12),
+      0 0 0 1px rgba(15, 23, 42, 0.05);
+  }
+  & .bg-navy-light\/25 {
+    background-color: rgba(241, 245, 249, 0.5);
+  }
+  & .bg-navy-light\/40 {
+    background-color: #ffffff;
+  }
+  & .bg-navy-light {
+    background-color: #f1f5f9;
+  }
+  & .bg-navy\/95 {
+    background-color: rgba(248, 250, 252, 0.95);
+  }
+  & .bg-navy\/90 {
+    background-color: rgba(248, 250, 252, 0.9);
+  }
+  & .bg-navy\/80 {
+    background-color: rgba(248, 250, 252, 0.8);
+  }
+  & .bg-navy\/40 {
+    background-color: rgba(248, 250, 252, 0.4);
+  }
 }
 
 /* ─── Glow Effects ─── */

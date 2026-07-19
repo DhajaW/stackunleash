@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Header from "@/components/Header";
+import { useTheme } from "@/components/ThemeProvider";
 import Footer from "@/components/Footer";
 import {
   ArrowLeft,
@@ -17,22 +18,8 @@ import {
 import { Post } from "@/data/posts";
 
 export default function PostClient({ post }: { post: Post }) {
-  const [darkMode, setDarkMode] = useState(true);
-
-  // Initialize theme from localStorage
-  useEffect(() => {
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme === "light") {
-      setDarkMode(false);
-    }
-  }, []);
-
-  const toggleTheme = () => {
-    const nextMode = !darkMode;
-    setDarkMode(nextMode);
-    localStorage.setItem("theme", nextMode ? "dark" : "light");
-  };
-
+  const { theme } = useTheme();
+  const darkMode = theme === "dark";
   const bg = darkMode ? "bg-navy min-h-screen text-white" : "bg-slate-50 min-h-screen text-slate-800";
 
   return (
@@ -47,42 +34,12 @@ export default function PostClient({ post }: { post: Post }) {
               <Link
                 href="/blog"
                 className={`flex items-center gap-2 text-sm font-semibold transition-colors ${
-                  darkMode ? "text-cyan hover:text-white" : "text-cyan hover:text-cyan-dark"
+                  darkMode ? "text-cyan hover:text-text-primary" : "text-cyan hover:text-cyan-dark"
                 }`}
                 style={{ fontFamily: "var(--font-heading)" }}
               >
                 <ArrowLeft className="w-4 h-4" /> Back to Articles
               </Link>
-
-              {/* Theme toggle */}
-              <button
-                id="blog-theme-toggle"
-                onClick={toggleTheme}
-                className={`relative w-14 h-8 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-cyan/40 cursor-pointer ${
-                  darkMode ? "bg-slate-800 border border-white/10" : "bg-cyan/10 border border-cyan/20"
-                }`}
-                aria-label="Toggle theme"
-              >
-                <span
-                  className={`absolute top-[3px] w-6 h-6 rounded-full flex items-center justify-center transition-transform duration-300 shadow-md ${
-                    darkMode ? "translate-x-7" : "translate-x-1"
-                  }`}
-                  style={{
-                    background: darkMode
-                      ? "linear-gradient(135deg,#1e3a5f,#0891b2)"
-                      : "linear-gradient(135deg,#fbbf24,#f59e0b)",
-                    boxShadow: darkMode
-                      ? "0 0 10px rgba(6,182,212,0.4)"
-                      : "0 0 10px rgba(251,191,36,0.5)",
-                  }}
-                >
-                  {darkMode ? (
-                    <Moon className="w-3.5 h-3.5 text-cyan" />
-                  ) : (
-                    <Sun className="w-3.5 h-3.5 text-white" />
-                  )}
-                </span>
-              </button>
             </div>
 
             {/* Category tag */}

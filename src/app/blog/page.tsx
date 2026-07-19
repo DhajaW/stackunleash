@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import Header from "@/components/Header";
+import { useTheme } from "@/components/ThemeProvider";
 import Footer from "@/components/Footer";
 import {
   ArrowRight,
@@ -437,24 +438,11 @@ function ArtCard({
    MAIN PAGE
 ───────────────────────────────────────── */
 export default function BlogPage() {
-  const [darkMode, setDarkMode] = useState(true);
+  const { theme } = useTheme();
+  const darkMode = theme === "dark";
   const [activeCategory, setActiveCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
   const [searchFocused, setSearchFocused] = useState(false);
-
-  // Initialize theme from localStorage on client mount
-  useEffect(() => {
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme === "light") {
-      setDarkMode(false);
-    }
-  }, []);
-
-  const toggleTheme = () => {
-    const nextMode = !darkMode;
-    setDarkMode(nextMode);
-    localStorage.setItem("theme", nextMode ? "dark" : "light");
-  };
 
   const featuredPost = posts.find((p) => p.featured)!;
   const gridPosts = posts.filter((p) => !p.featured);
@@ -531,38 +519,6 @@ export default function BlogPage() {
           />
 
           <div className="relative max-w-6xl mx-auto">
-            {/* Theme toggle — hardware-accelerated translation animation */}
-            <div className="absolute top-0 right-0">
-              <button
-                id="blog-theme-toggle"
-                onClick={toggleTheme}
-                className={`relative w-14 h-8 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-cyan/40 cursor-pointer ${
-                  darkMode ? "bg-slate-800 border border-white/10" : "bg-cyan/10 border border-cyan/20"
-                }`}
-                aria-label="Toggle theme"
-              >
-                <span
-                  className={`absolute top-[3px] w-6 h-6 rounded-full flex items-center justify-center transition-transform duration-300 shadow-md ${
-                    darkMode ? "translate-x-7" : "translate-x-1"
-                  }`}
-                  style={{
-                    background: darkMode
-                      ? "linear-gradient(135deg,#1e3a5f,#0891b2)"
-                      : "linear-gradient(135deg,#fbbf24,#f59e0b)",
-                    boxShadow: darkMode
-                      ? "0 0 10px rgba(6,182,212,0.4)"
-                      : "0 0 10px rgba(251,191,36,0.5)",
-                  }}
-                >
-                  {darkMode ? (
-                    <Moon className="w-3.5 h-3.5 text-cyan" />
-                  ) : (
-                    <Sun className="w-3.5 h-3.5 text-white" />
-                  )}
-                </span>
-              </button>
-            </div>
-
             {/* Section label */}
             <p className="section-label animate-fade-up">The StackUnleash Journal</p>
 
