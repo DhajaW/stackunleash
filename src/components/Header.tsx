@@ -62,7 +62,7 @@ export default function Header() {
           <a
             href="/#hero"
             id="logo-link"
-            className="flex items-center gap-3.5 group"
+            className="flex items-center gap-2.5 group"
             aria-label="StackUnleash Home"
           >
             <div className="transition-transform duration-300 group-hover:scale-110">

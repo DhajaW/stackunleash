@@ -130,6 +130,50 @@ h1, h2, h3, h4, h5, h6 {
     0 0 0 1px var(--color-border);
 }
 
+/* ─── Problem Cards (Glow & Theme Adaptive) ─── */
+.problem-card {
+  position: relative;
+  background: linear-gradient(135deg, var(--color-glass-light), var(--problem-glow)) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.problem-card:hover {
+  background: linear-gradient(135deg, var(--color-glass-light), var(--problem-glow)) !important;
+  border-color: var(--problem-border-hover) !important;
+  transform: translateY(-4px);
+  box-shadow:
+    0 20px 40px -12px rgba(0, 0, 0, 0.25),
+    0 0 24px var(--problem-glow-shadow),
+    0 0 0 1px var(--problem-border-hover) !important;
+}
+
+.problem-icon-container {
+  background: var(--problem-glow) !important;
+  border: 1px solid var(--color-border);
+  color: var(--problem-icon-color) !important;
+  transition: all 0.3s ease;
+}
+
+html.light .problem-card {
+  background: linear-gradient(135deg, var(--color-glass-light), var(--problem-glow-light)) !important;
+  box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.05);
+}
+
+html.light .problem-card:hover {
+  background: linear-gradient(135deg, #ffffff, var(--problem-glow-light)) !important;
+  border-color: var(--problem-border-hover-light) !important;
+  box-shadow:
+    0 20px 40px -12px rgba(15, 23, 42, 0.12),
+    0 0 24px var(--problem-glow-shadow-light),
+    0 0 0 1px var(--problem-border-hover-light) !important;
+}
+
+html.light .problem-icon-container {
+  background: var(--problem-glow-light-solid) !important;
+  border: 1px solid var(--problem-border-hover-light) !important;
+  color: var(--problem-icon-color-light) !important;
+}
+
 html.light {
   /* Override text-white to dynamically resolve to text-primary, keeping it readable */
   & .text-white:not(.keep-white) {

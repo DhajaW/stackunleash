@@ -18,27 +18,51 @@ const problems = [
     title: "The Spreadsheet Trap",
     description:
       "Critical business data scattered across disconnected spreadsheets can be a hassle to manage.",
-    color: "text-red-400",
-    borderColor: "hover:border-red-400/30",
-    bgGlow: "rgba(248, 113, 113, 0.04)",
+    styles: {
+      "--problem-glow": "rgba(248, 113, 113, 0.04)",
+      "--problem-glow-light": "rgba(239, 68, 68, 0.03)",
+      "--problem-glow-light-solid": "rgba(239, 68, 68, 0.08)",
+      "--problem-border-hover": "rgba(248, 113, 113, 0.35)",
+      "--problem-border-hover-light": "rgba(239, 68, 68, 0.3)",
+      "--problem-glow-shadow": "rgba(248, 113, 113, 0.06)",
+      "--problem-glow-shadow-light": "rgba(239, 68, 68, 0.04)",
+      "--problem-icon-color": "#F87171",
+      "--problem-icon-color-light": "#DC2626",
+    } as React.CSSProperties,
   },
   {
     icon: Workflow,
     title: "Chasing Contractors",
     description:
       "Manual approvals, billing delays, and operational bottlenecks. e.g., automatically verifying contractor mobilization totals exactly match $3,970,540.00 before committee approval.",
-    color: "text-amber-400",
-    borderColor: "hover:border-amber-400/30",
-    bgGlow: "rgba(251, 191, 36, 0.04)",
+    styles: {
+      "--problem-glow": "rgba(251, 191, 36, 0.04)",
+      "--problem-glow-light": "rgba(245, 158, 11, 0.03)",
+      "--problem-glow-light-solid": "rgba(245, 158, 11, 0.08)",
+      "--problem-border-hover": "rgba(251, 191, 36, 0.35)",
+      "--problem-border-hover-light": "rgba(245, 158, 11, 0.3)",
+      "--problem-glow-shadow": "rgba(251, 191, 36, 0.06)",
+      "--problem-glow-shadow-light": "rgba(245, 158, 11, 0.04)",
+      "--problem-icon-color": "#FBBF24",
+      "--problem-icon-color-light": "#D97706",
+    } as React.CSSProperties,
   },
   {
     icon: MessageSquare,
     title: "Communication Breakdown",
     description:
       "Important updates lost across WhatsApp, email, and phone calls. e.g., ensuring a maintenance complaint for House No. 514 is never mistakenly logged as 513 and routes directly to the right staff.",
-    color: "text-rose-400",
-    borderColor: "hover:border-rose-400/30",
-    bgGlow: "rgba(251, 113, 133, 0.04)",
+    styles: {
+      "--problem-glow": "rgba(251, 113, 133, 0.04)",
+      "--problem-glow-light": "rgba(244, 63, 94, 0.03)",
+      "--problem-glow-light-solid": "rgba(244, 63, 94, 0.08)",
+      "--problem-border-hover": "rgba(251, 113, 133, 0.35)",
+      "--problem-border-hover-light": "rgba(244, 63, 94, 0.3)",
+      "--problem-glow-shadow": "rgba(251, 113, 133, 0.06)",
+      "--problem-glow-shadow-light": "rgba(244, 63, 94, 0.04)",
+      "--problem-icon-color": "#FB7185",
+      "--problem-icon-color-light": "#E11D48",
+    } as React.CSSProperties,
   },
 ];
 
@@ -101,23 +125,17 @@ export default function Problems() {
             return (
               <div
                 key={problem.title}
-                className={`glass-card rounded-2xl p-8 ${problem.borderColor} transition-all duration-700 ${
+                className={`problem-card glass-card rounded-2xl p-8 transition-all duration-700 ${
                   isVisible
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 translate-y-8"
                 }`}
                 style={{
                   transitionDelay: `${(index + 1) * 150}ms`,
-                  background: `linear-gradient(135deg, rgba(30, 41, 59, 0.4), ${problem.bgGlow})`,
+                  ...problem.styles,
                 }}
               >
-                <div
-                  className={`w-12 h-12 rounded-xl flex items-center justify-center mb-5 ${problem.color}`}
-                  style={{
-                    background: `${problem.bgGlow}`,
-                    border: "1px solid rgba(255,255,255,0.06)",
-                  }}
-                >
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 problem-icon-container">
                   <Icon className="w-5 h-5" />
                 </div>
                 <h3
