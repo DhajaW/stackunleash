@@ -306,7 +306,7 @@ export default function ContactPage() {
                   <div>
                     <h4 className="font-semibold text-white text-sm">Call & WhatsApp Support</h4>
                     <div className="flex flex-col gap-1 text-sm text-text-secondary mt-1">
-                      <a href="tel:+94757922199" className="hover:text-cyan transition-colors duration-200">+94 75792 2199</a>
+                      <a href="tel:+94757922199" className="hover:text-cyan transition-colors duration-200">+94 75 79 221 99</a>
                       <a href="tel:+94713080010" className="hover:text-cyan transition-colors duration-200">+94 71 30 800 10</a>
                     </div>
                   </div>
