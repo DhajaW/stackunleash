@@ -36,8 +36,8 @@ export const metadata: Metadata = {
     "Software Agency Sri Lanka",
   ],
   icons: {
-    icon: "/favicon.png",
-    apple: "/favicon.png",
+    icon: "/favicon-v2.png",
+    apple: "/favicon-v2.png",
   },
   alternates: {
     canonical: "/",
