@@ -162,15 +162,15 @@ const techStack: TechItem[] = [
   {
     name: "Vercel",
     category: "Backend",
-    color: "#FFFFFF",
-    bgColor: "rgba(255, 255, 255, 0.08)",
+    color: "var(--color-foreground)",
+    bgColor: "var(--color-border-light)",
     logo: "Vc",
   },
   {
     name: "GitHub",
     category: "Backend",
-    color: "#FFFFFF",
-    bgColor: "rgba(255, 255, 255, 0.08)",
+    color: "var(--color-foreground)",
+    bgColor: "var(--color-border-light)",
     logo: "Gh",
   },
   // AI & Automation
@@ -251,12 +251,11 @@ export default function TechStack() {
     <section
       id="stack"
       ref={sectionRef}
-      className="relative section-padding"
-      style={{
-        background:
-          "linear-gradient(180deg, rgba(15,23,42,1) 0%, rgba(30,41,59,0.3) 50%, rgba(15,23,42,1) 100%)",
-      }}
+      className="relative section-padding overflow-hidden"
     >
+      {/* Dynamic Background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-500/5 to-transparent pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-500/10 blur-[120px] rounded-full pointer-events-none" />
       <div className="max-w-6xl mx-auto">
         {/* Section header */}
         <div
@@ -271,7 +270,7 @@ export default function TechStack() {
           >
             Powered by Industry-Leading Tools
             <br />
-            <span className="text-text-secondary">for Custom Development</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-600">for Custom Development</span>
           </h2>
           <p
             className="max-w-2xl mx-auto text-text-muted text-base"
@@ -321,7 +320,7 @@ export default function TechStack() {
                       </div>
                       <div>
                         <p
-                          className="text-sm font-semibold text-white"
+                          className="text-sm font-semibold text-text-primary"
                           style={{ fontFamily: "var(--font-heading)" }}
                         >
                           {tech.name}
