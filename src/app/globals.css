@@ -468,3 +468,17 @@ html.light {
   }
 }
 
+html.light .shine-text {
+  background: linear-gradient(
+    to right,
+    rgba(15, 23, 42, 0.5) 0%,
+    rgba(15, 23, 42, 0.5) 30%,
+    rgba(15, 23, 42, 1) 50%,
+    rgba(15, 23, 42, 0.5) 70%,
+    rgba(15, 23, 42, 0.5) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
