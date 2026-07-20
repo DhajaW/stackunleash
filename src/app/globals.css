@@ -81,27 +81,41 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-text-primary);
 }
 
-/* ─── Animated Gradient Text ─── */
 @keyframes gradient-flow {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% { background-position: 100% center; }
+  100% { background-position: 0% center; }
 }
 
 .gradient-text {
   background: linear-gradient(
-    270deg,
-    #00D8FF,
-    #6366F1,
-    #8B5CF6,
-    #6366F1,
-    #00D8FF
+    to right,
+    #00D8FF 0%,
+    #8B5CF6 25%,
+    #00D8FF 50%,
+    #8B5CF6 75%,
+    #00D8FF 100%
   );
-  background-size: 300% 300%;
+  background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: gradient-flow 6s ease infinite;
+  animation: gradient-flow 5s linear infinite;
+}
+
+.orange-gradient-text {
+  background: linear-gradient(
+    to right,
+    #FF6B00 0%,
+    #FFB800 25%,
+    #FF6B00 50%,
+    #FFB800 75%,
+    #FF6B00 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-flow 5s linear infinite;
 }
 
 /* ─── Glassmorphism ─── */

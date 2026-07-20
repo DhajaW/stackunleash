@@ -73,7 +73,7 @@ export default function Header() {
                 className="text-2xl font-black tracking-tight leading-none"
                 style={{ fontFamily: "var(--font-heading)" }}
               >
-                <span className="text-text-primary">STACK</span>
+                <span className="orange-gradient-text">STACK</span>
                 <span className="gradient-text">UNLEASH</span>
               </span>
               <span
