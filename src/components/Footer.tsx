@@ -118,7 +118,7 @@ export default function Footer() {
                   className="text-base font-extrabold tracking-tight leading-none"
                   style={{ fontFamily: "var(--font-heading)" }}
                 >
-                  <span className="text-white">STACK</span>
+                  <span className="orange-gradient-text">STACK</span>
                   <span className="gradient-text">UNLEASH</span>
                 </span>
                 <span
@@ -210,7 +210,7 @@ export default function Footer() {
                   style={{ fontFamily: "var(--font-body)" }}
                 >
                   <Phone className="w-4 h-4" />
-                  +94 75792 2199
+                  +94 75 79 221 99
                 </a>
               </li>
               <li>
