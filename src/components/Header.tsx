@@ -6,7 +6,7 @@ import { Menu, X, Sun, Moon } from "lucide-react";
 import { useTheme } from "./ThemeProvider";
 
 const navLinks = [
-  { label: "Services", href: "/#services" },
+  { label: "Services", href: "/services" },
   { label: "Blog", href: "/blog" },
   { label: "Case Studies", href: "/#case-studies" },
   { label: "About Us", href: "/about" },

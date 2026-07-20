@@ -18,6 +18,7 @@ const coreSolutions = [
       "Professional, high-conversion websites tailored to your brand and business processes. Whether you need a marketing site or a full client portal, we deliver personalized website experiences that stand out.",
     accentColor: "cyan",
     borderHover: "border-glow-cyan",
+    href: "/services/custom-website-development",
   },
   {
     icon: Workflow,
@@ -27,6 +28,7 @@ const coreSolutions = [
     accentColor: "orange",
     borderHover: "border-glow-orange",
     featured: true,
+    href: "/services/workflow-automation",
   },
   {
     icon: Smartphone,
@@ -35,6 +37,7 @@ const coreSolutions = [
       "Turn your ideas into reality with native Android & iOS apps. From internal tools to customer-facing applications, we help you get your own app that integrates seamlessly with your workflows.",
     accentColor: "cyan",
     borderHover: "border-glow-cyan",
+    href: "/services/custom-mobile-app-development",
   },
   {
     icon: Building2,
@@ -43,6 +46,7 @@ const coreSolutions = [
       "Secure, scalable internal systems that combine web + mobile capabilities. Built for businesses that need centralised control, role-based access, and real-time data across every touchpoint.",
     accentColor: "orange",
     borderHover: "border-glow-orange",
+    href: "/services/enterprise-portals",
   },
 ];
 
@@ -144,7 +148,7 @@ export default function Services() {
 
                 {/* CTA */}
                 <a
-                  href="#discovery"
+                  href={solution.href}
                   id={`service-cta-${index}`}
                   className={`mt-auto inline-flex items-center justify-center gap-2 w-full py-3 rounded-xl text-sm font-semibold transition-all duration-300 group ${
                     solution.featured

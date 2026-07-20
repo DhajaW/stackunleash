@@ -4,10 +4,10 @@ import { Mail, MapPin, Phone } from "lucide-react";
 
 const footerLinks = {
   services: [
-    { label: "Enterprise Portals", href: "/#services" },
-    { label: "AI Workflows", href: "/#services" },
-    { label: "Mobile Apps", href: "/#services" },
-    { label: "Consulting", href: "/#discovery" },
+    { label: "Custom Websites", href: "/services/custom-website-development" },
+    { label: "Workflow Automation", href: "/services/workflow-automation" },
+    { label: "Mobile Apps", href: "/services/custom-mobile-app-development" },
+    { label: "Enterprise Portals", href: "/services/enterprise-portals" },
   ],
   company: [
     { label: "Blog", href: "/blog" },
