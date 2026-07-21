@@ -108,28 +108,28 @@ export default function Footer() {
           <div className="sm:col-span-2 lg:col-span-1">
             <a
               href="/#hero"
-              className="flex items-center gap-3 mb-5 group"
+              className="flex items-center gap-1.5 sm:gap-2 mb-5 group"
             >
               <div className="transition-transform duration-300 group-hover:scale-110 flex-shrink-0">
-                <img src="/logo-icon.png" alt="StackUnleash Icon" className="h-11 sm:h-12 w-auto object-contain" />
+                <img src="/logo-icon.png" alt="StackUnleash Icon" className="h-[46px] sm:h-[52px] w-auto object-contain" />
               </div>
               <div className="flex flex-col items-start justify-center">
                 <div className="flex flex-col leading-none">
                   <span
-                    className="text-[15px] sm:text-[17px] font-black tracking-tight leading-[0.9] orange-gradient-text"
+                    className="text-[18px] sm:text-[20px] font-black tracking-tight leading-[0.88] orange-gradient-text"
                     style={{ fontFamily: "var(--font-heading)" }}
                   >
                     STACK
                   </span>
                   <span
-                    className="text-[15px] sm:text-[17px] font-black tracking-tight leading-[0.9] gradient-text mt-[2px]"
+                    className="text-[18px] sm:text-[20px] font-black tracking-tight leading-[0.88] gradient-text mt-[1px]"
                     style={{ fontFamily: "var(--font-heading)" }}
                   >
                     UNLEASH
                   </span>
                 </div>
                 <span
-                  className="text-[6.5px] sm:text-[7px] font-black tracking-[0.20em] uppercase mt-1 shine-text"
+                  className="text-[6.5px] sm:text-[7.5px] font-black tracking-[0.20em] uppercase mt-1 shine-text"
                   style={{ fontFamily: "var(--font-heading)" }}
                 >
                   Build &bull; Automate &bull; Scale
