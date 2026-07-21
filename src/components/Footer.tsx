@@ -113,27 +113,31 @@ export default function Footer() {
               <div className="transition-transform duration-300 group-hover:scale-105 flex-shrink-0">
                 <img src="/logo-icon.png" alt="StackUnleash Icon" className="h-[54px] sm:h-[62px] w-auto object-contain" />
               </div>
-              <div className="flex flex-col items-start pt-[11px] sm:pt-[13px] -ml-2 sm:-ml-3">
-                <div className="flex flex-col leading-none">
-                  <span
-                    className="text-[16.5px] sm:text-[18px] font-black tracking-[0.14em] leading-[0.85] orange-gradient-text"
+              <div className="flex flex-col items-start pt-[11px] sm:pt-[13px] -ml-2 sm:-ml-3 w-full">
+                <div className="flex flex-col w-full leading-none">
+                  <div
+                    className="w-full flex justify-between text-[15.5px] sm:text-[17px] font-black leading-[0.85] orange-gradient-text"
                     style={{ fontFamily: "var(--font-heading)" }}
                   >
-                    STACK
-                  </span>
+                    <span>S</span><span>T</span><span>A</span><span>C</span><span>K</span>
+                  </div>
                   <span
-                    className="text-[14.5px] sm:text-[16px] font-black tracking-[0.02em] leading-[0.85] gradient-text mt-[1px]"
+                    className="text-[14.5px] sm:text-[16px] font-black tracking-tight leading-[0.85] gradient-text mt-[1px] block whitespace-nowrap"
                     style={{ fontFamily: "var(--font-heading)" }}
                   >
                     UNLEASH
                   </span>
                 </div>
-                <span
-                  className="text-[5.5px] sm:text-[6.2px] font-black tracking-[0.09em] uppercase mt-1 shine-text"
+                <div
+                  className="w-full flex justify-between text-[5px] sm:text-[5.5px] font-black uppercase mt-1 shine-text"
                   style={{ fontFamily: "var(--font-heading)" }}
                 >
-                  Build &bull; Automate &bull; Scale
-                </span>
+                  <span>BUILD</span>
+                  <span>&bull;</span>
+                  <span>AUTOMATE</span>
+                  <span>&bull;</span>
+                  <span>SCALE</span>
+                </div>
               </div>
             </a>
             <p

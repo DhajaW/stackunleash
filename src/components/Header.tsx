@@ -69,26 +69,30 @@ export default function Header() {
               <img id="logo-icon-img" src="/logo-icon.png" alt="StackUnleash Icon" className="h-[64px] sm:h-[74px] w-auto object-contain" />
             </div>
             <div className="flex flex-col items-start pt-[13px] sm:pt-[16px] -ml-2.5 sm:-ml-3.5">
-              <div className="flex flex-col leading-none">
-                <span
-                  className="text-[19px] sm:text-[21.5px] font-black tracking-[0.14em] leading-[0.85] orange-gradient-text"
+              <div className="flex flex-col w-full leading-none">
+                <div
+                  className="w-full flex justify-between text-[18px] sm:text-[20px] font-black leading-[0.85] orange-gradient-text"
                   style={{ fontFamily: "var(--font-heading)" }}
                 >
-                  STACK
-                </span>
+                  <span>S</span><span>T</span><span>A</span><span>C</span><span>K</span>
+                </div>
                 <span
-                  className="text-[17px] sm:text-[19px] font-black tracking-[0.02em] leading-[0.85] gradient-text mt-[1px]"
+                  className="text-[17px] sm:text-[19px] font-black tracking-tight leading-[0.85] gradient-text mt-[1px] block whitespace-nowrap"
                   style={{ fontFamily: "var(--font-heading)" }}
                 >
                   UNLEASH
                 </span>
               </div>
-              <span
-                className="text-[6.5px] sm:text-[7.2px] font-black tracking-[0.09em] uppercase mt-1 shine-text"
+              <div
+                className="w-full flex justify-between text-[6px] sm:text-[6.5px] font-black uppercase mt-1 shine-text"
                 style={{ fontFamily: "var(--font-heading)" }}
               >
-                Build &bull; Automate &bull; Scale
-              </span>
+                <span>BUILD</span>
+                <span>&bull;</span>
+                <span>AUTOMATE</span>
+                <span>&bull;</span>
+                <span>SCALE</span>
+              </div>
             </div>
           </a>
 
