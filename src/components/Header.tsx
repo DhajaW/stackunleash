@@ -71,20 +71,20 @@ export default function Header() {
             <div className="flex flex-col items-start pt-[13px] sm:pt-[16px] -ml-2.5 sm:-ml-3.5">
               <div className="flex flex-col leading-none">
                 <span
-                  className="text-[17px] sm:text-[19px] font-black tracking-tight leading-[0.85] orange-gradient-text"
+                  className="text-[19px] sm:text-[21.5px] font-black tracking-[0.14em] leading-[0.85] orange-gradient-text"
                   style={{ fontFamily: "var(--font-heading)" }}
                 >
                   STACK
                 </span>
                 <span
-                  className="text-[17px] sm:text-[19px] font-black tracking-tight leading-[0.85] gradient-text mt-[1px]"
+                  className="text-[17px] sm:text-[19px] font-black tracking-[0.02em] leading-[0.85] gradient-text mt-[1px]"
                   style={{ fontFamily: "var(--font-heading)" }}
                 >
                   UNLEASH
                 </span>
               </div>
               <span
-                className="text-[6px] sm:text-[6.5px] font-black tracking-[0.08em] uppercase mt-1 shine-text"
+                className="text-[6.5px] sm:text-[7.2px] font-black tracking-[0.09em] uppercase mt-1 shine-text"
                 style={{ fontFamily: "var(--font-heading)" }}
               >
                 Build &bull; Automate &bull; Scale

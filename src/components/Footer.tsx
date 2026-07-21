@@ -116,20 +116,20 @@ export default function Footer() {
               <div className="flex flex-col items-start pt-[11px] sm:pt-[13px] -ml-2 sm:-ml-3">
                 <div className="flex flex-col leading-none">
                   <span
-                    className="text-[15px] sm:text-[16px] font-black tracking-tight leading-[0.85] orange-gradient-text"
+                    className="text-[16.5px] sm:text-[18px] font-black tracking-[0.14em] leading-[0.85] orange-gradient-text"
                     style={{ fontFamily: "var(--font-heading)" }}
                   >
                     STACK
                   </span>
                   <span
-                    className="text-[15px] sm:text-[16px] font-black tracking-tight leading-[0.85] gradient-text mt-[1px]"
+                    className="text-[14.5px] sm:text-[16px] font-black tracking-[0.02em] leading-[0.85] gradient-text mt-[1px]"
                     style={{ fontFamily: "var(--font-heading)" }}
                   >
                     UNLEASH
                   </span>
                 </div>
                 <span
-                  className="text-[5.5px] sm:text-[6px] font-black tracking-[0.07em] uppercase mt-1 shine-text"
+                  className="text-[5.5px] sm:text-[6.2px] font-black tracking-[0.09em] uppercase mt-1 shine-text"
                   style={{ fontFamily: "var(--font-heading)" }}
                 >
                   Build &bull; Automate &bull; Scale
