@@ -84,7 +84,7 @@ export default function Header() {
                 </span>
               </div>
               <span
-                className="text-[7px] sm:text-[7.5px] font-black tracking-[0.20em] uppercase mt-1 shine-text"
+                className="text-[6px] sm:text-[6.5px] font-black tracking-[0.08em] uppercase mt-1 shine-text"
                 style={{ fontFamily: "var(--font-heading)" }}
               >
                 Build &bull; Automate &bull; Scale

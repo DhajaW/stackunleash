@@ -129,7 +129,7 @@ export default function Footer() {
                   </span>
                 </div>
                 <span
-                  className="text-[6.5px] sm:text-[7px] font-black tracking-[0.18em] uppercase mt-1 shine-text"
+                  className="text-[5.5px] sm:text-[6px] font-black tracking-[0.07em] uppercase mt-1 shine-text"
                   style={{ fontFamily: "var(--font-heading)" }}
                 >
                   Build &bull; Automate &bull; Scale
