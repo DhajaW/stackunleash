@@ -70,12 +70,12 @@ export default function Header() {
             </div>
             <div className="flex flex-col items-start pt-[13px] sm:pt-[16px] -ml-2.5 sm:-ml-3.5">
               <div className="flex flex-col w-full leading-none">
-                <div
-                  className="w-full flex justify-between text-[18px] sm:text-[20px] font-black leading-[0.85] orange-gradient-text"
+                <span
+                  className="text-[20px] sm:text-[22.5px] font-black tracking-[0.12em] leading-[0.85] orange-gradient-text transform origin-left scale-x-[1.06] block whitespace-nowrap"
                   style={{ fontFamily: "var(--font-heading)" }}
                 >
-                  <span>S</span><span>T</span><span>A</span><span>C</span><span>K</span>
-                </div>
+                  STACK
+                </span>
                 <span
                   className="text-[17px] sm:text-[19px] font-black tracking-tight leading-[0.85] gradient-text mt-[1px] block whitespace-nowrap"
                   style={{ fontFamily: "var(--font-heading)" }}
