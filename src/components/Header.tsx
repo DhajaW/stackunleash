@@ -62,29 +62,29 @@ export default function Header() {
           <a
             href="/#hero"
             id="logo-link"
-            className="flex items-center gap-1.5 sm:gap-2 group py-1"
+            className="flex items-start group py-0.5"
             aria-label="StackUnleash Home"
           >
-            <div className="transition-transform duration-300 group-hover:scale-110 flex-shrink-0">
-              <img id="logo-icon-img" src="/logo-icon.png" alt="StackUnleash Icon" className="h-[54px] sm:h-[62px] w-auto object-contain" />
+            <div className="transition-transform duration-300 group-hover:scale-105 flex-shrink-0">
+              <img id="logo-icon-img" src="/logo-icon.png" alt="StackUnleash Icon" className="h-[64px] sm:h-[74px] w-auto object-contain" />
             </div>
-            <div className="flex flex-col items-start justify-center">
+            <div className="flex flex-col items-start pt-[13px] sm:pt-[16px] -ml-2.5 sm:-ml-3.5">
               <div className="flex flex-col leading-none">
                 <span
-                  className="text-[21px] sm:text-[24px] font-black tracking-tight leading-[0.88] orange-gradient-text"
+                  className="text-[17px] sm:text-[19px] font-black tracking-tight leading-[0.85] orange-gradient-text"
                   style={{ fontFamily: "var(--font-heading)" }}
                 >
                   STACK
                 </span>
                 <span
-                  className="text-[21px] sm:text-[24px] font-black tracking-tight leading-[0.88] gradient-text mt-[1px]"
+                  className="text-[17px] sm:text-[19px] font-black tracking-tight leading-[0.85] gradient-text mt-[1px]"
                   style={{ fontFamily: "var(--font-heading)" }}
                 >
                   UNLEASH
                 </span>
               </div>
               <span
-                className="text-[7.5px] sm:text-[8.5px] font-black tracking-[0.22em] uppercase mt-1 shine-text"
+                className="text-[7px] sm:text-[7.5px] font-black tracking-[0.20em] uppercase mt-1 shine-text"
                 style={{ fontFamily: "var(--font-heading)" }}
               >
                 Build &bull; Automate &bull; Scale
