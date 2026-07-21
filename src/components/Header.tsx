@@ -62,22 +62,29 @@ export default function Header() {
           <a
             href="/#hero"
             id="logo-link"
-            className="flex items-center gap-2.5 group"
+            className="flex items-center gap-3 group py-1"
             aria-label="StackUnleash Home"
           >
-            <div className="transition-transform duration-300 group-hover:scale-110">
-              <img id="logo-icon-img" src="/logo-icon.png" alt="StackUnleash Icon" className="h-14 w-auto object-contain" />
+            <div className="transition-transform duration-300 group-hover:scale-110 flex-shrink-0">
+              <img id="logo-icon-img" src="/logo-icon.png" alt="StackUnleash Icon" className="h-12 sm:h-14 w-auto object-contain" />
             </div>
-            <div className="flex flex-col items-start">
+            <div className="flex flex-col items-start justify-center">
+              <div className="flex flex-col leading-none">
+                <span
+                  className="text-[17px] sm:text-[20px] font-black tracking-tight leading-[0.9] orange-gradient-text"
+                  style={{ fontFamily: "var(--font-heading)" }}
+                >
+                  STACK
+                </span>
+                <span
+                  className="text-[17px] sm:text-[20px] font-black tracking-tight leading-[0.9] gradient-text mt-[2px]"
+                  style={{ fontFamily: "var(--font-heading)" }}
+                >
+                  UNLEASH
+                </span>
+              </div>
               <span
-                className="text-2xl font-black tracking-tight leading-none"
-                style={{ fontFamily: "var(--font-heading)" }}
-              >
-                <span className="orange-gradient-text">STACK</span>
-                <span className="gradient-text">UNLEASH</span>
-              </span>
-              <span
-                className="text-[8px] font-black tracking-[0.22em] uppercase mt-1.5 shine-text"
+                className="text-[7.5px] sm:text-[8px] font-black tracking-[0.22em] uppercase mt-1.5 shine-text"
                 style={{ fontFamily: "var(--font-heading)" }}
               >
                 Build &bull; Automate &bull; Scale
