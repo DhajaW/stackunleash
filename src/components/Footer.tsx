@@ -115,12 +115,12 @@ export default function Footer() {
               </div>
               <div className="flex flex-col items-start pt-[11px] sm:pt-[13px] -ml-2 sm:-ml-3 w-full">
                 <div className="flex flex-col w-full leading-none">
-                  <span
-                    className="text-[17.5px] sm:text-[19.5px] font-black tracking-[0.12em] leading-[0.85] orange-gradient-text transform origin-left scale-x-[1.06] block whitespace-nowrap"
+                  <div
+                    className="w-full flex justify-between text-[15.5px] sm:text-[17px] font-black leading-[0.85] orange-gradient-text"
                     style={{ fontFamily: "var(--font-heading)" }}
                   >
-                    STACK
-                  </span>
+                    <span>S</span><span>T</span><span>A</span><span>C</span><span>K</span>
+                  </div>
                   <span
                     className="text-[14.5px] sm:text-[16px] font-black tracking-tight leading-[0.85] gradient-text mt-[1px] block whitespace-nowrap"
                     style={{ fontFamily: "var(--font-heading)" }}
